@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10/05/2019, 09:38:31 PM
+    Author     : Johan
+*/
+
+.inputContrasena
+{
+    background: url("CandadoImg.png") no-repeat scroll white;
+    border: 1px solid #BFBFBF;
+    color: black;
+    padding-left: 15%;
+    width: 230px;
+/*    background-position: 4px -21px;*/
+}
+
+.inputUsuario
+{
+    background: url("User.png") no-repeat scroll white;
+    border: 1px solid #BFBFBF;
+    color: black;
+    padding-left: 15%;
+    width: 230px;
+    background-position: 0px 2px;
+}
+
+.loginBody
+{
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(242,242,242,1) 46%, rgba(231,230,230,1) 66%, rgba(208,206,206,1) 90%, rgba(175,171,171,1) 100%);
+/*    background-image: url(Plus3.png);
+    background-repeat: repeat;*/
+}
+.loginContenidoPrincipal
+{
+/*    width: 608px;*/
+    width: 763px;
+    height: 666px;
+    margin: 25px;
+    padding: 0;
+    background-image: url(LogoInicio.png);
+    background-repeat: no-repeat;
+/*    background-size: cover;*/
+    color: #000;
+    text-align: center;
+    font-size: 1.2em;
+    position: relative;
+    display: inline-block;
+    
+}
+
+.ContenedorDatosIngreso{
+    
+    margin-right: auto;
+    margin-left: auto;
+    background: rgba(0, 0, 0, 0.50);
+/*    box-shadow: 0px 0px 5px 0px rgba(4,175,173,0.75);*/
+    box-shadow: 0px 0px 13px 1px rgba(4,175,173,0.75);
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    width: 300px;
+    height: 250px;
+    border-radius: 20px;
+    padding: 5%;
+}

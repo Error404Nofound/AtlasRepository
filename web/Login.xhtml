@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="#{request.contextPath}/resources/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/resources/Styles/Login/Login.css?1.0.5" type="text/css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/resources/bootstrap/fonts/glyphicons-halflings-regular.svg" type="text/css" rel="stylesheet"/>
+        <title>Login</title>
+    </h:head>
+    <h:body class="loginBody">
+
+        <div class="loginContenidoPrincipal">
+            <div class="ContenedorDatosIngreso">
+                <div class="form-group">
+                    <label style="color: white" for="Usario">Usuario</label>
+                    <input type="text" class="form-control inputUsuario" id="exampleInputEmail1" placeholder=""/>
+                </div>
+                <div class="form-group">
+                    <label style="color: white" for="Contrasena">Contraseña</label>
+                    <input type="password" class="form-control inputContrasena" id="exampleInputPassword1" placeholder=""/>
+                </div>
+                <button type="submit" style="background:rgb(8,104,134) " class="btn btn-primary">Ingresar</button>
+            </div>
+        </div>        
+    </h:body>
+    <script src="#{request.contextPath}/resources/Scripts/jquery/jquery.js"></script>
+    <script src="#{request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>
+    <script src="#{request.contextPath}/resources/Scripts/Login/Login.js"></script>
+
+</html>
