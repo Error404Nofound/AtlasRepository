@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="#{request.contextPath}/resources/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet"/>
         <link href="#{request.contextPath}/resources/bootstrap/css/bootstrap-theme.css" type="text/css" rel="stylesheet"/>
-        <link href="#{request.contextPath}/resources/Styles/Layout/Layout.css" type="text/css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/resources/Styles/Layout/Layout.css?1.0.0" type="text/css" rel="stylesheet"/>
         <title>Atlas</title>
     </h:head>
 
@@ -27,8 +27,8 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="#{fn:startsWith(request.pathInfo,'/index')?'active':'' } "> <h:link outcome="index" value="Home"/></li>
-                        <li class="#{fn:startsWith(request.pathInfo,'/Login')?'active':'' } "><h:link outcome="Login" value="Login"/></li>
+                        <li><a href="#{request.contextPath}/faces/Login.xhtml" class="btn btn-lg"><span class="glyphicon glyphicon-cog"></span>Login</a></li>   
+                        <li><a href="#{request.contextPath}/faces/index.xhtml" class="btn btn-lg"><span class="glyphicon glyphicon-apple"></span>Index</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -40,6 +40,6 @@
     </h:body>
     <script src="#{request.contextPath}/resources/Scripts/jquery/jquery.js"></script>
     <script src="#{request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>
-    <script src="#{request.contextPath}/resources/Scripts/Layout/Layout.js"></script>
+    <script src="#{request.contextPath}/resources/Scripts/Layout/Layout.js?1.0.0"></script>
 
 </html>
