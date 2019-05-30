@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.EvidenciaAprendizaje" table="evidencia_aprendizaje" catalog="atlas" optimistic-lock="version">
+        <id name="idEvidencia" type="java.lang.Integer">
+            <column name="id_evidencia" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="resultadoAprendizaje" class="Model.ResultadoAprendizaje" fetch="select">
+            <column name="id_resultado_aprendizaje" not-null="true" />
+        </many-to-one>
+        <property name="nombreEvidencia" type="string">
+            <column name="nombre_evidencia" length="300" not-null="true" />
+        </property>
+        <property name="descripcionEvidencia" type="string">
+            <column name="descripcion_evidencia" length="65535" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="10" />
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="10" />
+        </property>
+        <property name="fechaRegistro" type="date">
+            <column name="fecha_registro" length="10" />
+        </property>
+        <set name="juicioEvalutivos" table="juicio_evalutivo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_evidencia" not-null="true" />
+            </key>
+            <one-to-many class="Model.JuicioEvalutivo" />
+        </set>
+    </class>
+</hibernate-mapping>

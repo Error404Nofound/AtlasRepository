@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.ResultadoAprendizaje" table="resultado_aprendizaje" catalog="atlas" optimistic-lock="version">
+        <id name="idResultadoAprendizaje" type="java.lang.Integer">
+            <column name="id_resultado_aprendizaje" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="competencia" class="Model.Competencia" fetch="select">
+            <column name="id_competencia" not-null="true" />
+        </many-to-one>
+        <property name="nombreResultado" type="string">
+            <column name="Nombre_resultado" length="65535" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="65535" not-null="true" />
+        </property>
+        <property name="fechaRegistro" type="date">
+            <column name="fecha_registro" length="10" />
+        </property>
+        <set name="instructorResultadoAprendizajes" table="instructor_resultado_aprendizaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_resultado_aprendizaje" not-null="true" />
+            </key>
+            <one-to-many class="Model.InstructorResultadoAprendizaje" />
+        </set>
+        <set name="evidenciaAprendizajes" table="evidencia_aprendizaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_resultado_aprendizaje" not-null="true" />
+            </key>
+            <one-to-many class="Model.EvidenciaAprendizaje" />
+        </set>
+    </class>
+</hibernate-mapping>

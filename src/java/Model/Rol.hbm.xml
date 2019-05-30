@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Rol" table="rol" catalog="atlas" optimistic-lock="version">
+        <id name="idRol" type="java.lang.Integer">
+            <column name="id_rol" />
+            <generator class="identity" />
+        </id>
+        <property name="nombreRol" type="string">
+            <column name="nombre_rol" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="65535" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="20" not-null="true" />
+        </property>
+        <property name="fechaRegistro" type="date">
+            <column name="fecha_registro" length="10" />
+        </property>
+        <property name="idUsuarioModifica" type="java.lang.Integer">
+            <column name="id_usuario_modifica" />
+        </property>
+        <property name="nombreUsuarioModifica" type="string">
+            <column name="nombre_usuario_modifica" length="300" />
+        </property>
+        <set name="perfils" table="perfil" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_rol" not-null="true" />
+            </key>
+            <one-to-many class="Model.Perfil" />
+        </set>
+        <set name="permisos" table="permiso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_rol" not-null="true" />
+            </key>
+            <one-to-many class="Model.Permiso" />
+        </set>
+    </class>
+</hibernate-mapping>

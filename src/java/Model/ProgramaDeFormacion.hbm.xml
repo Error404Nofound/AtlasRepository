@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.ProgramaDeFormacion" table="programa_de_formacion" catalog="atlas" optimistic-lock="version">
+        <id name="idPrograma" type="java.lang.Integer">
+            <column name="id_programa" />
+            <generator class="identity" />
+        </id>
+        <property name="nombrePrograma" type="string">
+            <column name="nombre_programa" not-null="true" />
+        </property>
+        <property name="duracionMeses" type="int">
+            <column name="duracion_meses" not-null="true" />
+        </property>
+        <property name="descripcionPrograma" type="string">
+            <column name="descripcion_programa" length="65535" />
+        </property>
+        <property name="tipoPrograma" type="string">
+            <column name="tipo_programa" length="50" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="50" not-null="true" />
+        </property>
+        <property name="idUsuarioModifica" type="int">
+            <column name="id_usuario_modifica" not-null="true" />
+        </property>
+        <property name="nombreUsuarioModifica" type="string">
+            <column name="nombre_usuario_modifica" length="300" not-null="true" />
+        </property>
+        <set name="competencias" table="competencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_programa" not-null="true" />
+            </key>
+            <one-to-many class="Model.Competencia" />
+        </set>
+        <set name="fichas" table="ficha" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_programa" not-null="true" />
+            </key>
+            <one-to-many class="Model.Ficha" />
+        </set>
+    </class>
+</hibernate-mapping>

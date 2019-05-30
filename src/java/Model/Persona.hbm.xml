@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Persona" table="persona" catalog="atlas" optimistic-lock="version">
+        <id name="numeroDocumento" type="string">
+            <column name="numero_documento" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="tipoDocumento" type="string">
+            <column name="tipo_documento" length="10" not-null="true" />
+        </property>
+        <property name="primerNombre" type="string">
+            <column name="primer_nombre" length="100" not-null="true" />
+        </property>
+        <property name="segundoNombre" type="string">
+            <column name="segundo_nombre" length="100" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="primer_apellido" length="100" not-null="true" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="segundo_apellido" length="100" />
+        </property>
+        <property name="genero" type="string">
+            <column name="genero" length="20" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="150" />
+        </property>
+        <property name="fechaModificacio" type="date">
+            <column name="fecha_modificacio" length="10" />
+        </property>
+        <property name="idUsuarioModifica" type="java.lang.Integer">
+            <column name="id_usuario_modifica" />
+        </property>
+        <property name="nombreUsuarioModifica" type="string">
+            <column name="nombre_usuario_modifica" length="300" />
+        </property>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numero_documento" length="15" not-null="true" />
+            </key>
+            <one-to-many class="Model.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Ficha" table="ficha" catalog="atlas" optimistic-lock="version">
+        <id name="idFicha" type="java.lang.Integer">
+            <column name="id_ficha" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="programaDeFormacion" class="Model.ProgramaDeFormacion" fetch="select">
+            <column name="id_programa" not-null="true" />
+        </many-to-one>
+        <property name="cupo" type="int">
+            <column name="cupo" not-null="true" />
+        </property>
+        <property name="fechaRegistro" type="date">
+            <column name="fecha_registro" length="10" not-null="true" />
+        </property>
+        <set name="trimestres" table="trimestre" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_ficha" not-null="true" />
+            </key>
+            <one-to-many class="Model.Trimestre" />
+        </set>
+        <set name="aprendizFichas" table="aprendiz_ficha" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_ficha" not-null="true" />
+            </key>
+            <one-to-many class="Model.AprendizFicha" />
+        </set>
+    </class>
+</hibernate-mapping>
