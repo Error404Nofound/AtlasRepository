@@ -14,20 +14,21 @@
         <title>Login</title>
     </h:head>
     <h:body class="loginBody">
-
-        <div class="loginContenidoPrincipal">
-            <div class="ContenedorDatosIngreso">
-                <div class="form-group">
-                    <label style="color: white" for="Usario">Usuario</label>
-                    <input type="text" class="form-control inputUsuario" id="exampleInputEmail1" placeholder=""/>
+        <h:form>
+            <div class="loginContenidoPrincipal">
+                <div class="ContenedorDatosIngreso">
+                    <div class="form-group">
+                        <label style="color: white" for="Usario">Usuario</label>
+                        <h:inputText class="form-control inputUsuario" id="txpassword" value="#{loginBean.usuario.documentoUsuario}"/>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: white" for="Contrasena">Contraseña</label>
+                        <h:inputText id="txpassword1" class="form-control inputContrasena" value="#{loginBean.usuario.contrasena}"/>
+                    </div>
+                    <h:commandButton style="background:rgb(8,104,134)" class="btn btn-primary" id="btnAutenticar" value="Ingresar" type="submit" action="#{loginBean.autenticarUsuario()}"/>
                 </div>
-                <div class="form-group">
-                    <label style="color: white" for="Contrasena">Contraseña</label>
-                    <input type="password" class="form-control inputContrasena" id="exampleInputPassword1" placeholder=""/>
-                </div>
-                <button type="submit" style="background:rgb(8,104,134) " class="btn btn-primary">Ingresar</button>
-            </div>
-        </div>        
+            </div>  
+        </h:form>
     </h:body>
     <script src="#{request.contextPath}/resources/Scripts/jquery/jquery.js"></script>
     <script src="#{request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>
