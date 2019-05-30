@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.AprendizFicha" table="aprendiz_ficha" catalog="atlas" optimistic-lock="version">
+        <id name="idAprendizFicha" type="java.lang.Integer">
+            <column name="id_aprendiz_ficha" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="aprendiz" class="Model.Aprendiz" fetch="select">
+            <column name="id_aprendiz" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ficha" class="Model.Ficha" fetch="select">
+            <column name="id_ficha" not-null="true" />
+        </many-to-one>
+        <property name="fechaRegistro" type="date">
+            <column name="fecha_registro" length="10" />
+        </property>
+        <property name="fechaModificacio" type="date">
+            <column name="fecha_modificacio" length="10" />
+        </property>
+        <property name="idUsuarioModifica" type="java.lang.Integer">
+            <column name="id_usuario_modifica" />
+        </property>
+        <property name="nombreUsuarioModifica" type="string">
+            <column name="nombre_usuario_modifica" length="300" />
+        </property>
+    </class>
+</hibernate-mapping>

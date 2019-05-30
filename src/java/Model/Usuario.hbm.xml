@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Usuario" table="usuario" catalog="atlas" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="id_usuario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="persona" class="Model.Persona" fetch="select">
+            <column name="numero_documento" length="15" not-null="true" />
+        </many-to-one>
+        <property name="estadoUsuario" type="string">
+            <column name="estado_usuario" length="20" not-null="true" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="contrasena" length="500" not-null="true" />
+        </property>
+        <property name="fechaContrasena" type="date">
+            <column name="fecha_contrasena" length="10" />
+        </property>
+        <property name="contrasenaAnterior" type="string">
+            <column name="contrasena_anterior" length="500" />
+        </property>
+        <property name="intentosLogin" type="java.lang.Integer">
+            <column name="intentos_login" />
+        </property>
+        <property name="fechaRegistro" type="date">
+            <column name="fecha_registro" length="10" />
+        </property>
+        <property name="correoSena" type="string">
+            <column name="correo_sena" length="150" />
+        </property>
+        <property name="fechaModificacio" type="date">
+            <column name="fecha_modificacio" length="10" />
+        </property>
+        <property name="idUsuarioModifica" type="java.lang.Integer">
+            <column name="id_usuario_modifica" />
+        </property>
+        <property name="nombreUsuarioModifica" type="string">
+            <column name="nombre_usuario_modifica" length="300" />
+        </property>
+        <set name="aprendizs" table="aprendiz" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_usuario" not-null="true" />
+            </key>
+            <one-to-many class="Model.Aprendiz" />
+        </set>
+        <set name="perfils" table="perfil" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_usuario" not-null="true" />
+            </key>
+            <one-to-many class="Model.Perfil" />
+        </set>
+        <set name="instructors" table="instructor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_usuario" not-null="true" />
+            </key>
+            <one-to-many class="Model.Instructor" />
+        </set>
+    </class>
+</hibernate-mapping>

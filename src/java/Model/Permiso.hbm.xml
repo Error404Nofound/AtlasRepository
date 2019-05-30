@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.Permiso" table="permiso" catalog="atlas" optimistic-lock="version">
+        <id name="idPermiso" type="java.lang.Integer">
+            <column name="id_permiso" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="rol" class="Model.Rol" fetch="select">
+            <column name="id_rol" not-null="true" />
+        </many-to-one>
+        <property name="nombrePermiso" type="string">
+            <column name="nombre_permiso" />
+        </property>
+        <property name="modulo" type="string">
+            <column name="modulo" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="20" not-null="true" />
+        </property>
+        <property name="crar" type="boolean">
+            <column name="crar" not-null="true" />
+        </property>
+        <property name="consultar" type="boolean">
+            <column name="consultar" not-null="true" />
+        </property>
+        <property name="modificar" type="boolean">
+            <column name="modificar" not-null="true" />
+        </property>
+        <property name="eliminar" type="boolean">
+            <column name="eliminar" not-null="true" />
+        </property>
+        <property name="fechaModificacio" type="date">
+            <column name="fecha_modificacio" length="10" />
+        </property>
+        <property name="idUsuarioModifica" type="java.lang.Integer">
+            <column name="id_usuario_modifica" />
+        </property>
+        <property name="nombreUsuarioModifica" type="string">
+            <column name="nombre_usuario_modifica" length="300" />
+        </property>
+    </class>
+</hibernate-mapping>

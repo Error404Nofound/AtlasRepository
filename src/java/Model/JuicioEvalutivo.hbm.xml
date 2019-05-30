@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-may-2019 19:08:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.JuicioEvalutivo" table="juicio_evalutivo" catalog="atlas" optimistic-lock="version">
+        <id name="idJuicio" type="java.lang.Integer">
+            <column name="id_juicio" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="evidenciaAprendizaje" class="Model.EvidenciaAprendizaje" fetch="select">
+            <column name="id_evidencia" not-null="true" />
+        </many-to-one>
+        <property name="idUsuarioAprendizaje" type="int">
+            <column name="id_usuario_aprendizaje" not-null="true" />
+        </property>
+        <property name="valorJuicio" type="string">
+            <column name="valor_juicio" length="2" not-null="true" />
+        </property>
+        <property name="fechaJuicioEvaluativo" type="date">
+            <column name="fecha_juicio_evaluativo" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
