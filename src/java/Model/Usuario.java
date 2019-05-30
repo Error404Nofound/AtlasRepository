@@ -27,6 +27,7 @@ public class Usuario  implements java.io.Serializable {
      private Set<Aprendiz> aprendizs = new HashSet<Aprendiz>(0);
      private Set<Perfil> perfils = new HashSet<Perfil>(0);
      private Set<Instructor> instructors = new HashSet<Instructor>(0);
+     private String DocumentoUsuario;
 
     public Usuario() {
     }
@@ -159,8 +160,13 @@ public class Usuario  implements java.io.Serializable {
     public void setInstructors(Set<Instructor> instructors) {
         this.instructors = instructors;
     }
+    public String getDocumentoUsuario() {
+        return DocumentoUsuario;
+    }
 
-
+    public void setDocumentoUsuario(String DocumentoUsuario) {
+        this.DocumentoUsuario = DocumentoUsuario;
+    }
 
 
 }
