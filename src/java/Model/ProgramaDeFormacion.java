@@ -116,6 +116,10 @@ public class ProgramaDeFormacion  implements java.io.Serializable {
     public void setFichas(Set<Ficha> fichas) {
         this.fichas = fichas;
     }
+    public String getId_ProgramaDeFormacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 
 

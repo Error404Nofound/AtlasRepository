@@ -71,7 +71,7 @@ public class PersonaBean {
 
     public void setListaPersonas(List<Persona> listaPersonas) {
         this.listaPersonas = listaPersonas;
-    }
+    }//listo
 
     public Persona getPersona() {
         return persona;

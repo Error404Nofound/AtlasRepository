@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/Views/Layout/Layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="ContenidoBody">
+        <h1>Administrar Programas de Formacion</h1>
+
+        <h:button class="btn btn-success" id="btnCrear" outcome="CrearProgramaDeFormacion.xhtml" value="Crear ProgramaDeFormacion">
+        </h:button>
+        <br/>
+        <br/>
+        <br/>
+        <h:form id="formTablaProgramaDeFormacion">
+            <p:dataTable var="programaDeFormacionItem" value="#{ProgramaDeFormacionBean.listaProgramaDeFormacion}"
+                         emptyMessage="No existen registros"
+                         paginator="true" rows="10" paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                         {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         >
+
+                <p:column headerText="Modificar">
+                    <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarProgramaDeFormacion">
+                        <f:setPropertyActionListener target="#{ProgramaDeFormacionBean.programaDeFormacion}" value="#{programaDeFormacionItem}"/>
+                    </p:commandButton>
+                </p:column>
+                <p:column headerText="Id Programa">
+                    <h:outputText value="#{programaDeFormacionItem.idPrograma}"/>
+                </p:column>
+                <p:column headerText="Nombre Programa">
+                    <h:outputText value="#{programaDeFormacionItem.nombrePrograma}"/>
+                </p:column>
+                <p:column headerText="Duracion Meses">
+                    <h:outputText value="#{programaDeFormacionItem.duracionMeses}"/>
+                </p:column>
+                <p:column headerText="Descripcion Programa">
+                    <h:outputText value="#{programaDeFormacionItem.descripcionPrograma}"/>
+                </p:column>
+                <p:column headerText="Tipo Programa">
+                    <h:outputText value="#{programaDeFormacionItem.tipoPrograma}"/>
+                </p:column>
+                <p:column headerText="Nombre Usuario Modifica">
+                    <h:outputText value="#{programaDeFormacionItem.nombreUsuarioModifica}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+        <p:dialog id="dlg1" header="Modificar ProgramaDeFormacion" showEffect="fade" hideEffect="fade" widgetVar="dlgmodificar"
+                  modal="true" resizable="false" minWidth="200">
+            <h:form id="formTablaProgramaDeFormacion">
+                <p:panelGrid columns="2">
+                    
+                    <p:outputLabel value="Nombre Programa"/>
+                    <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.nombrePrograma}"/>
+
+                    <p:outputLabel value="Descripcion Programa"/>
+                    <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.descripcionPrograma}"/>
+                </p:panelGrid>
+                <p:commandButton value="Modificar" update=":formTablaProgramaDeFormacion"
+                                 actionListener="#{ProgramaDeFormacionBean.modificarProgramaDeFormacion()}"
+                                 oncomplete="dlgmodificar.hide();"/>
+            </h:form>
+        </p:dialog>
+        
+        
+        
+        
+
+    </ui:define>
+
+</ui:composition>
