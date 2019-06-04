@@ -7,37 +7,37 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
       
     <ui:define name="ContenidoBody">
-        <h1>Crear Persona</h1>
+        <h1>Crear Programa de formación </h1>
 
         <h:form id="formCrearProgramaDeFormacion">
             <p:panelGrid columns="2">
 
                 <p:outputLabel value="Id Programa "/>
-                <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.idPrograma}"/>
+                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.idPrograma}"/>
                 
                 <p:outputLabel value="Nombre Programa"/>
-                <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.nombrePrograma}"/>
+                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.nombrePrograma}"/>
                 
                 <p:outputLabel value="Duracion Meses	"/>
-                <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.duracionMeses}"/>
+                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}"/>
                 
                 <p:outputLabel value="Descripcion Programa"/>
-                <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.descripcionPrograma}"/>
+                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.descripcionPrograma}"/>
                 
                 <p:outputLabel value="Tipo Programa"/>
                 <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.tipoPrograma}"/>
                 
                 <p:outputLabel value="Estado"/>
-                <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.estado}"/>
+                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.estado}"/>
                 
                 <p:outputLabel value="Id Usuario Modifica	"/>
-                <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.idUsuarioModifica}"/>
+                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.idUsuarioModifica}"/>
                 
                 <p:outputLabel value="Nombre Usuario Modifica"/>
-                <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.nombreUsuarioModifica}"/>
+                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.nombreUsuarioModifica}"/>
 
             </p:panelGrid>
-            <p:commandButton actionListener="#{ProgramaDeFormacionBean.CrearProgramaDeFormacion()}" value="Registrar" class="btn btn-success"/>
+            <p:commandButton actionListener="#{programaDeFormacionBean.crearProgramaDeFormacion()}" value="Registrar" class="btn btn-success"/>
         </h:form>
     </ui:define>
 
