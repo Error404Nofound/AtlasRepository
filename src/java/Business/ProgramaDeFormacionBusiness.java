@@ -20,23 +20,23 @@ import org.hibernate.Session;
 public class ProgramaDeFormacionBusiness implements ProgramaDeFormacionDao{
     
     @Override
-    public ProgramaDeFormacion crearProgramaDeFormacion(ProgramaDeFormacion programaDeFormacionCrear) {
+    public ProgramaDeFormacion crearProgramaDeFormacion(ProgramaDeFormacion programaDeFormacionCreado) {
               Session session = null;
         try
         {
-            java.sql.Date fechaActual = new java.sql.Date(0, 0, 0);//no se utiliza 
+            //java.sql.Date fechaActual = new java.sql.Date(0, 0, 0);//no se utiliza 
             
             //no la entiendo es la fecha de modificacion del programa
             //programaDeFormacionCrear.setFechaModificacio(fechaActual);
             session = NewHibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(programaDeFormacionCrear);
+            session.save(programaDeFormacionCreado);
             session.getTransaction().commit();
         }catch(Exception ex)
         {
             System.err.println(ex.getMessage());
             session.getTransaction().rollback();
-            programaDeFormacionCrear = null;
+            programaDeFormacionCreado = null;
         }finally
         {
             if(session !=null)
@@ -45,7 +45,7 @@ public class ProgramaDeFormacionBusiness implements ProgramaDeFormacionDao{
             }
         }
         
-        return programaDeFormacionCrear;
+        return programaDeFormacionCreado;
     }
 
     /**
