@@ -42,7 +42,8 @@ public class ProgramaDeFormacionBean {
         Usuario usuarioLogeado = (Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         
         ProgramaDeFormacion programaDeFormacionCreado = new ProgramaDeFormacion();
-        programaDeFormacion.setIdUsuarioModifica(usuarioLogeado.getIdUsuario());
+        programaDeFormacion.setIdUsuarioModifica(
+                usuarioLogeado.getIdUsuario());
 //        persona.setNombreUsuarioModifica(usuarioLogeado.getPersona().getPrimerNombre());
         programaDeFormacionCreado = programaDeFormacionNegocio.crearProgramaDeFormacion(programaDeFormacion);
         if(programaDeFormacionCreado != null)

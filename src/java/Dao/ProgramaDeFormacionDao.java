@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ProgramaDeFormacionDao {
 
-    public ProgramaDeFormacion crearProgramaDeFormacion(ProgramaDeFormacion programaDeFormacionCrear);
+    public ProgramaDeFormacion crearProgramaDeFormacion(ProgramaDeFormacion programaDeFormacionCreado);
     public ProgramaDeFormacion consultarProgramaDeFormacionPorId(int idProgramaDeFormacion);
     public List<ProgramaDeFormacion> listaProgramaDeFormacion();
     public boolean modificarProgramaDeFormacion(ProgramaDeFormacion programaDeFormacionModificar);
