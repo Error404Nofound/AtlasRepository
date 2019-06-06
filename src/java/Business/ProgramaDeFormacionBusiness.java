@@ -82,7 +82,7 @@ public class ProgramaDeFormacionBusiness implements ProgramaDeFormacionDao{
         List<ProgramaDeFormacion> listaProgramaDeFormacion = null;
         try {
             session = NewHibernateUtil.getSessionFactory().openSession();
-            Query query = session.createQuery("from programa_de_formacion");// hago el selec de la tabla programa de la base de datos
+            Query query = session.createQuery("from ProgramaDeFormacion");// hago el selec de la tabla programa de la clase que esta en el model
             listaProgramaDeFormacion = (List<ProgramaDeFormacion>) query.list();
             
             

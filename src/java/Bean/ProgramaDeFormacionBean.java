@@ -48,7 +48,7 @@ public class ProgramaDeFormacionBean {
         programaDeFormacionCreado = programaDeFormacionNegocio.crearProgramaDeFormacion(programaDeFormacion);
         if(programaDeFormacionCreado != null)
         {
-           FacesContext.getCurrentInstance().getExternalContext().redirect("CrearProgramaDeFormacion.xhtml");
+           FacesContext.getCurrentInstance().getExternalContext().redirect("CreadoProgramaDeFormacion.xhtml");
         }
         
     }

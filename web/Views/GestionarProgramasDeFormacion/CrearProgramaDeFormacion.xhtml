@@ -10,40 +10,9 @@
     <ui:define name="ContenidoBody">
         <h1>Crear Programa de formación </h1>
 
-        <h:form id="formCrearProgramaDeFormacion">
-            <p:panelGrid columns="2">
+        <h:form id="frmCrearPrograma">
 
-                <p:outputLabel value="Id Programa "/>
-                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.idPrograma}"/>
-                
-                <p:outputLabel value="Nombre Programa"/>
-                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.nombrePrograma}"/>
-                
-                <p:outputLabel value="Duracion Meses	"/>
-                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}"/>
-                
-                <p:outputLabel value="Descripcion Programa"/>
-                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.descripcionPrograma}"/>
-                
-                <p:outputLabel value="Tipo Programa"/>
-                <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.tipoPrograma}"/>
-                
-                <p:outputLabel value="Estado"/>
-                <p:selectOneMenu id="console" value="#{programaDeFormacionBean.programaDeFormacion.estado}" style="">
-                    <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO" />
-                    <f:selectItem itemLabel="INACTIVO" itemValue="INACTIVO" />
-                </p:selectOneMenu>
-                
-                
-                <p:outputLabel value="Id Usuario Modifica	"/>
-                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.idUsuarioModifica}"/>
-                
-                <p:outputLabel value="Nombre Usuario Modifica"/>
-                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.nombreUsuarioModifica}"/>
-
-            
-                <p:commandButton actionListener="#{programaDeFormacionBean.crearProgramaDeFormacion()}" value="Registrar" class="btn btn-success"/>
-        </p:panelGrid>
+            <p:commandButton actionListener="#{programaDeFormacionBean.crearProgramaDeFormacion()}" id="btn" value="Registrar" class="btn btn-success"/>
         </h:form>
     </ui:define>
 
