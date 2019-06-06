@@ -66,6 +66,10 @@ public class Trimestre  implements java.io.Serializable {
     public void setNumeroTrimestre(short numeroTrimestre) {
         this.numeroTrimestre = numeroTrimestre;
     }
+    public void setFechaModificacio(java.sql.Date fechaActual) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 
 

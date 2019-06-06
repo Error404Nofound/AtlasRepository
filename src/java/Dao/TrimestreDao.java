@@ -5,10 +5,18 @@
  */
 package Dao;
 
+import Model.Trimestre;
+import java.util.List;
+
 /**
  *
  * @author Asus
  */
 public interface TrimestreDao {
     
+    public Trimestre crearTrimestre(Trimestre trimestreCrear);
+    public Trimestre consultarTrimestrePorId(int idTrimestre);
+    public List<Trimestre> listaTrimestre();
+    public boolean modificarTrimestre(Trimestre trimestreModificar);
+    public boolean eliminarTrimestre(Trimestre trimestreEliminar);
 }
