@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="#{request.contextPath}/resources/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/resources/bootstrap/css/bootstrap-theme.css" type="text/css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/resources/Styles/Layout/Layout.css?1.0.0" type="text/css" rel="stylesheet"/>
+        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+        <h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head" />
+        <title>Atlas</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">Top
+            <h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="File" icon="pi pi-file">
+            <p:submenu label="New" icon="pi pi-briefcase">
+                <p:menuitem value="Project" url="#" />
+                <p:menuitem value="Other" url="#" />
+            </p:submenu>
+            <p:menuitem value="Open" url="#" />
+            <p:separator />
+            <p:menuitem value="Quit" url="#" />
+        </p:submenu>
+ 
+        <p:submenu label="Edit" icon="pi pi-pencil">
+            <p:menuitem value="Undo" url="#" icon="pi pi-angle-double-left" />
+            <p:menuitem value="Redo" url="#" icon="pi pi-angle-double-right" />
+        </p:submenu>
+ 
+        <p:submenu label="Help" icon="pi pi-question">
+            <p:menuitem value="Contents" url="#" />
+            <p:submenu label="Search" icon="pi pi-search">
+                <p:submenu label="Text">
+                    <p:menuitem value="Workspace" url="#" />
+                </p:submenu>
+                <p:menuitem value="File" url="#" />
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:submenu label="Actions" icon="pi pi-cog">
+            <p:submenu label="Ajax" icon="pi pi-refresh">
+                <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" update="messages"/>
+                <p:menuitem value="Update" action="#{menuView.update}" icon="pi pi-refresh" update="messages"/>
+            </p:submenu>
+            <p:submenu label="Non-Ajax" icon="pi pi-clone">
+                <p:menuitem value="Delete" action="#{menuView.delete}" icon="pi pi-times" update="messages" ajax="false"/>
+            </p:submenu>
+        </p:submenu>
+ 
+        <p:menuitem value="Quit" url="http://www.primefaces.org" icon="pi pi-times" />
+ 
+        <f:facet name="options">
+            <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
+            <p:commandButton type="button" value="Logout" icon="pi pi-home" />
+        </f:facet>
+    </p:menubar>
+</h:form>
+            
+            
+<!-- left -->         
+            
+            </ui:insert>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">Left
+                <h:form>
+    <p:growl id="messages" showDetail="true"/>
+ 
+    <p:slideMenu style="width:300px">
+        <p:submenu label="Administrar Personas" icon="pi pi-refresh">
+            <p:menuitem value="Crear Personas" action="#{menuView.save}" update="messages" icon="pi pi-save" />
+            <p:menuitem value="Update" action="#{menuView.update}" update="messages" icon="pi pi-refresh" />
+        </p:submenu>
+        
+        <p:submenu label="Administrar Usuarios" icon="pi pi-refresh">
+            <p:menuitem value="Crear Personas" action="#{menuView.save}" update="messages" icon="pi pi-save" />
+            <p:menuitem value="Update" action="#{menuView.update}" update="messages" icon="pi pi-refresh" />
+        </p:submenu>
+        
+        <p:submenu label="Administrar Programas de Formación" icon="pi pi-refresh">
+            <p:menuitem value="Crear Personas" action="#{menuView.save}" update="messages" icon="pi pi-save" />
+            <p:menuitem value="Update" action="#{menuView.update}" update="messages" icon="pi pi-refresh" />
+        </p:submenu>
+        
+        
+        
+        
+        
+        
+        <p:submenu label="Non-Ajax Menuitem" icon="pi pi-clone">
+            <p:menuitem value="Delete" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Navigations" icon="pi pi-home">
+            <p:submenu label="Prime Links">
+                <p:menuitem value="Prime" url="http://www.prime.com.tr" />
+                <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+            </p:submenu>
+            <p:menuitem value="Mobile" />
+        </p:submenu>
+    </p:slideMenu>
+     
+    <p:separator />
+ 
+    <p:commandButton id="dynaButton" value="Show" type="button" icon="pi pi-home"/>
+    <p:slideMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom" style="width:180px">
+        <p:submenu label="Ajax Menuitems">
+            <p:menuitem value="Save" action="#{menuView.save}" update="messages" icon="pi pi-save"/>
+            <p:menuitem value="Update" action="#{menuView.update}" update="messages" icon="pi pi-refresh"/>
+        </p:submenu>
+        <p:submenu label="Non-Ajax Menuitem">
+            <p:menuitem value="Delete" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+        </p:submenu>
+        <p:submenu label="Navigations" icon="pi pi-home">
+            <p:submenu label="Prime Links">
+                <p:menuitem value="Prime" url="http://www.prime.com.tr" />
+                <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+            </p:submenu>
+            <p:menuitem value="Mobile" />
+        </p:submenu>
+    </p:slideMenu>
+</h:form>
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

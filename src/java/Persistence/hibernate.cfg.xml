@@ -46,6 +46,7 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost/atlas</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password"/>
+    <property name="hibernate.show_sql">true</property>
     <mapping resource="Model/Aprendiz.hbm.xml"/>
     <mapping resource="Model/Persona.hbm.xml"/>
     <mapping resource="Model/AprendizFicha.hbm.xml"/>
