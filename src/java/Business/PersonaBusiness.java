@@ -29,6 +29,9 @@ public class PersonaBusiness implements PersonaDao{
             personaCrear.setFechaModificacio(fechaActual);
             session = NewHibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
+            Query query = session.createQuery("FROM  persona WHERE numero_documento=:n");
+            query.setParameter("n", "numero_documento");
+            Persona numDocumento = (Persona) query.list().get(0);
             session.save(personaCrear);
             session.getTransaction().commit();
         }catch(Exception ex)

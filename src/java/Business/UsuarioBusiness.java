@@ -23,9 +23,11 @@ public class UsuarioBusiness  implements UsuarioDao{
              
             usuarioCrear.setFechaModificacio(fechaActual);
             usuarioCrear.setFechaContrasena(fechaActual);
+            
             session = NewHibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(usuarioCrear);
+            session.merge(usuarioCrear);
+            session.flush();
             session.getTransaction().commit();
         }catch(Exception ex)
         {
