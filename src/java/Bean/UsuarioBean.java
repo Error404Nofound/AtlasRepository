@@ -52,6 +52,7 @@ public class UsuarioBean {
         Usuario usuarioLogeado = (Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         
         Usuario usuarioCreado = new Usuario();
+        
         usuario.setIdUsuarioModifica(usuarioLogeado.getIdUsuario());
 //        persona.setNombreUsuarioModifica(usuarioLogeado.getPersona().getPrimerNombre());
         usuarioCreado = usuarioNegocio.crearUsuario(usuario);
