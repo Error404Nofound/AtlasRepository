@@ -9,6 +9,8 @@ import Dao.TrimestreDao;
 import Model.Trimestre;
 import Persistence.NewHibernateUtil;
 import java.util.List;
+import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -48,24 +50,109 @@ public class TrimestreBusiness implements TrimestreDao {
     }
 
     @Override
-    
     public Trimestre consultarTrimestrePorId(int idTrimestre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = null;
+        
+        Trimestre trimestre = null;
+        try {
+            session = NewHibernateUtil.getSessionFactory().openSession();
+            trimestre  = (Trimestre) session.get(Trimestre.class,idTrimestre);
+            
+        }catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }finally
+        {
+            if(session !=null && session.isOpen()){
+                session.close();
+            }
+        }
+        return trimestre;
     }
 
     @Override
     public List<Trimestre> listaTrimestre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       Session session = null;
+        
+        List <Trimestre> listaTrimestre = null;
+        try {
+            session = NewHibernateUtil.getSessionFactory().openSession();
+            Query query = session.createQuery("from Trimestre");
+            listaTrimestre = (List<Trimestre>) query.list();
+            
+            
+        }catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }finally
+        {
+        
+            if(session !=null){
+                session.close();
+            }
+        }
+        return listaTrimestre;
     }
 
     @Override
     public boolean modificarTrimestre(Trimestre trimestreModificar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = null;
+        
+        Trimestre registroActualizar = new Trimestre();
+        boolean resultado = false;
+        try
+        {
+            session = NewHibernateUtil.getSessionFactory().openSession();
+            
+            session.beginTransaction();
+            registroActualizar.setFechaInicio(trimestreModificar.getFechaInicio());
+            registroActualizar.setFechaFin(trimestreModificar.getFechaFin());
+            registroActualizar.setNumeroTrimestre(trimestreModificar.getNumeroTrimestre());
+            registroActualizar.setFicha(trimestreModificar.getFicha());
+            
+            session.update(registroActualizar);
+            session.getTransaction().commit();
+            resultado = true;
+        }catch(Exception ex)
+        {
+            System.err.println(ex.getMessage());
+            session.getTransaction().rollback();
+            
+        }finally
+        {
+            if(session !=null)
+            {
+                session.close();
+            }
+        }
+        return resultado;
     }
 
     @Override
     public boolean eliminarTrimestre(Trimestre trimestreEliminar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       Session session = null;
+        boolean resultado = false;
+        try
+        {
+            session = NewHibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(trimestreEliminar);
+            session.getTransaction().commit();
+            resultado = true;
+        }catch(Exception ex)
+        {
+            System.err.println(ex.getMessage());
+            session.getTransaction().rollback();
+            
+        }finally
+        {
+            if(session !=null)
+            {
+                session.close();
+            }
+        }
+        
+        return resultado;
     }
     
 }

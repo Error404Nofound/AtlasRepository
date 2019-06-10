@@ -55,7 +55,6 @@ public class PersonaBean {
             personaNegocio.modificarPersona(persona);
             persona = new Persona();
         }
-        
     }
     
     
