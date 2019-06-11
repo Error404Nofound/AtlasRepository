@@ -23,7 +23,7 @@
                          {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          >
 
-                <p:column headerText="Modificar">
+                <p:column headerText="Acciones">
                     <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarPersona">
                         <f:setPropertyActionListener target="#{personaBean.persona}" value="#{personaItem}"/>
                     </p:commandButton>
@@ -58,7 +58,20 @@
                     <p:inputText value="#{personaBean.persona.primerNombre}"/>
 
                     <p:outputLabel value="Segundo Nombre"/>
+                    <p:inputText value="#{personaBean.persona.segundoNombre}"/>
+                    
+                    <p:outputLabel value="Primer Apellido"/>
                     <p:inputText value="#{personaBean.persona.primerApellido}"/>
+
+                    <p:outputLabel value="Segundo Apellido"/>
+                    <p:inputText value="#{personaBean.persona.segundoApellido}"/>
+                    
+                    <p:outputLabel value="Numero Documento"/>
+                    <p:inputText value="#{personaBean.persona.numeroDocumento}"/>
+
+                    <p:outputLabel value="Genero"/>
+                    <p:inputText value="#{personaBean.persona.genero}"/>
+                    
                 </p:panelGrid>
                 <p:commandButton value="Modificar" update=":formTablaPersonas"
                                  actionListener="#{personaBean.modificarPersona()}"
