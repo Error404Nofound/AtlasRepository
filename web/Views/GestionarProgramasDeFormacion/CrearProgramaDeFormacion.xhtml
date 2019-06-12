@@ -4,7 +4,8 @@
                 template="/Views/Layout/Layout.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="ContenidoBody">
         <h1>Crear Programa De Formacion</h1>
@@ -16,13 +17,24 @@
                 <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.nombrePrograma}"/>
                 
                 <p:outputLabel value="Duracion Meses"/>
-                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}"/>
+                <p:selectOneMenu id="duracionMeses" value="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}}" style="width:125px">
+                    <f:selectItem itemLabel="" itemValue="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}" />   
+                    <f:selectItem itemLabel="12" itemValue="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}" />
+                    <f:selectItem itemLabel="18" itemValue="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}" />
+                    <f:selectItem itemLabel="24" itemValue="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}" />
+                </p:selectOneMenu>
+                
                 
                 <p:outputLabel value="Tipo Programa"/>
                 <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.tipoPrograma}"/>
                 
                 <p:outputLabel value="estado"/>
-                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.estado}"/>
+                <p:selectOneMenu id="estado" value="#{programaDeFormacionBean.programaDeFormacion.estado}" style="width:125px">
+                <f:selectItem itemLabel="" itemValue="" />   
+                <f:selectItem itemLabel="Activo" itemValue="activo" />
+                <f:selectItem itemLabel="Inactivo" itemValue="inactivo" />
+                </p:selectOneMenu>
+                
                 
                 <p:outputLabel value="Nombre Usuario Modifica"/>
                 <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.nombreUsuarioModifica}"/>
