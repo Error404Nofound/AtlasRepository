@@ -11,6 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
+
+
 /**
  *
  * @author Johan
