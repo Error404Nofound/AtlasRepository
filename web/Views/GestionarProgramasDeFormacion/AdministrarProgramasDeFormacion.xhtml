@@ -23,9 +23,12 @@
                          {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          >
 
-                <p:column headerText="Modificar">
+                <p:column headerText="Acciones">
                     <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarProgramaDeFormacion">
-                        <f:setPropertyActionListener target="#{ProgramaDeFormacionBean.programaDeFormacion}" value="#{programaDeFormacionItem}"/>
+                        <f:setPropertyActionListener target="#{programaDeFormacionBean.programaDeFormacion}" value="#{programaDeFormacionItem}"/>
+                    </p:commandButton>
+                    <p:commandButton value="Eliminar" >
+                        <f:setPropertyActionListener target="#{programaDeFormacionBean.programaDeFormacion}" value="#{programaDeFormacionItem}"/>
                     </p:commandButton>
                 </p:column>
                 <p:column headerText="Id Programa">
@@ -56,9 +59,18 @@
                     
                     <p:outputLabel value="Nombre Programa"/>
                     <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.nombrePrograma}"/>
+                    
+                    <p:outputLabel value="Duración meses"/>
+                    <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.duracionMeses}"/>
+                    
+                    <p:outputLabel value="Tipo de Programa"/>
+                    <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.TipoPrograma}"/>
+                    
+                    <p:outputLabel value="Nombre Usuario Modidica"/>
+                    <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.nombreusuarioModifica}"/>
 
                     <p:outputLabel value="Descripcion Programa"/>
-                    <p:inputText value="#{ProgramaDeFormacionBean.programaDeFormacion.descripcionPrograma}"/>
+                    <p:inputTextarea value="#{ProgramaDeFormacionBean.programaDeFormacion.descripcionPrograma}"/>
                 </p:panelGrid>
                 <p:commandButton value="Modificar" update=":formTablaProgramaDeFormacion"
                                  actionListener="#{ProgramaDeFormacionBean.modificarProgramaDeFormacion()}"

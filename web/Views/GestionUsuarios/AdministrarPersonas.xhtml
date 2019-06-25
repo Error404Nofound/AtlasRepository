@@ -27,6 +27,9 @@
                     <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarPersona">
                         <f:setPropertyActionListener target="#{personaBean.persona}" value="#{personaItem}"/>
                     </p:commandButton>
+                    <p:commandButton value="Eliminar"  >
+                        <f:setPropertyActionListener target="#{personaBean.persona}" value="#{personaItem}"/>
+                    </p:commandButton>
                 </p:column>
                 <p:column headerText="Numero Documento">
                     <h:outputText value="#{personaItem.numeroDocumento}"/>

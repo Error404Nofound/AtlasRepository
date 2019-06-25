@@ -24,7 +24,7 @@
                          {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          >
 
-                <p:column headerText="Modificar">
+                <p:column headerText="Acciones">
                     <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarUsuario">
                         <f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuarioItem}"/>
                     </p:commandButton>
