@@ -18,15 +18,20 @@
                 
                 <p:outputLabel value="Duracion Meses"/>
                 <p:selectOneMenu id="duracionMeses" value="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}}" style="width:125px">
-                    <f:selectItem itemLabel="" itemValue="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}" />   
-                    <f:selectItem itemLabel="12" itemValue="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}" />
-                    <f:selectItem itemLabel="18" itemValue="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}" />
-                    <f:selectItem itemLabel="24" itemValue="#{programaDeFormacionBean.programaDeFormacion.duracionMeses}" />
+                    <f:selectItem itemLabel="" itemValue="" />
+                    <f:selectItem itemLabel="6" itemValue="6" />
+                    <f:selectItem itemLabel="12" itemValue="12" />
+                    <f:selectItem itemLabel="18" itemValue="18" />
+                    <f:selectItem itemLabel="24" itemValue="24" />
                 </p:selectOneMenu>
                 
                 
                 <p:outputLabel value="Tipo Programa"/>
-                <p:inputText value="#{programaDeFormacionBean.programaDeFormacion.tipoPrograma}"/>
+                <p:selectOneMenu id="tipoPrograma" value="#{programaDeFormacionBean.programaDeFormacion.tipoPrograma}" style="width:125px">
+                <f:selectItem itemLabel="" itemValue="" />   
+                <f:selectItem itemLabel="TECNICO" itemValue="TECNICO" />
+                <f:selectItem itemLabel="TECNOLOGO" itemValue="TECNOLOGO" />
+                </p:selectOneMenu>
                 
                 <p:outputLabel value="estado"/>
                 <p:selectOneMenu id="estado" value="#{programaDeFormacionBean.programaDeFormacion.estado}" style="width:125px">
