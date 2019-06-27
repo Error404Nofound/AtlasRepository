@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/Views/Layout/Layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="ContenidoBody">
+        <h1>Administrar Fichas</h1>
+        <h:button class="btn btn-success" id="btnCrear" outcome="CrearFicha.xhtml" value="Crear Ficha">
+        </h:button>
+        <br/>
+        <br/>
+        <br/>
+        <h:form id="formTablaFichas">
+            <p:dataTable var="fichaItem" value="#{fichaBean.listaFichas}"
+                         emptyMessage="No existen registros"
+                         paginator="true" rows="10" paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                         {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         >
+
+                <p:column headerText="Acciones">
+                    <p:commandButton value="Eliminar" action="#{fichaBean.eliminarFicha(fichaItem)}">
+                    </p:commandButton>
+                    <p:commandButton value="Actualizar" action="#{fichaBean.redireccionarModificarFicha()}">
+                    </p:commandButton>
+                </p:column>
+                <p:column headerText="Número Ficha">
+                    <h:outputText value="#{fichaItem.idFicha}"/>
+                </p:column>
+                <p:column headerText="Cupo">
+                    <h:outputText value="#{fichaItem.cupo}"/>
+                </p:column>
+                <p:column headerText="Fecha Registro">
+                    <h:outputText value="#{fichaItem.fechaRegistro}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+    
+        <p:dialog id="dlg1" header="Eliminar Ficha"
+                  showEffect="fade" hideEffect="fade" widgetVar="dlConfirmarEliminar"
+                  modal="true" resizable="false" minWidth="200">
+            <h:form id="formEliminar">
+                <h:outputText value="¿Eliminar Ficha?"/>
+                
+                <p:commandButton value="Si" actionListener="#{fichaBean.eliminarFicha()}"
+                                 oncomplete="dlConfirmarEliminar.hide();" update=":formTablaFichas"/>
+                <p:commandButton value="No" onclick="dlg1.hide()"/>
+            </h:form>
+        </p:dialog>
+</ui:composition> 

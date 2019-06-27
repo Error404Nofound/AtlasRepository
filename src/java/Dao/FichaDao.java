@@ -5,10 +5,18 @@
  */
 package Dao;
 
+import Model.Ficha;
+import java.util.List;
+
 /**
  *
  * @author Asus
  */
 public interface FichaDao {
     
+    public Ficha crearFicha(Ficha fichaCrear);
+    public Ficha consultarFichaPorId(int Id);
+    public List<Ficha> consultarListaFicha();
+    public boolean modificarFicha(Ficha fichaModificar);
+    public boolean eliminarFicha(Ficha fichaEliminar);
 }
