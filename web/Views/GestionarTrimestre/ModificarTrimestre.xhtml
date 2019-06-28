@@ -8,11 +8,11 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="ContenidoBody">
-        <h1>Crear Trimestre</h1>
+        <h1>Modificar Trimestre</h1>
 
-        <h:form id="frmCrearTrimestre">
+        <h:form id="formModificarTrimestre">
             <p:panelGrid columns="2">
-                <p:outputLabel value="Fecha Inicio"/>
+            <p:outputLabel value="Fecha Inicio"/>
                 <p:inputText type="Date" value="#{trimestreBean.trimestre.fechaInicio}"/>
                 
                 <p:outputLabel value="Fecha Fin"/>
@@ -30,5 +30,4 @@
             <p:commandButton actionListener="#{trimestreBean.crearTrimetre()}" value="Registrar" class="btn btn-success"/>
         </h:form>
     </ui:define>
-
 </ui:composition>

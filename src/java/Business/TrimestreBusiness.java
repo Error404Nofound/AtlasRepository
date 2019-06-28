@@ -9,7 +9,7 @@ import Dao.TrimestreDao;
 import Model.Trimestre;
 import Persistence.NewHibernateUtil;
 import java.util.List;
-import org.hibernate.Hibernate;
+import Model.Persona;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -22,31 +22,24 @@ public class TrimestreBusiness implements TrimestreDao {
     @Override
     public Trimestre crearTrimestre(Trimestre trimestreCrear) {
         Session session = null;
-        
-        try
-        {
+        try{
             java.sql.Date fechaActual = new java.sql.Date(0, 0, 0);
-            
             trimestreCrear.setFechaModificacio(fechaActual);
             session = NewHibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.save(trimestreCrear);
             session.getTransaction().commit();
-        }catch(Exception ex)
-        {
+        } catch(Exception ex) {
             System.err.println(ex.getMessage());
             session.getTransaction().rollback();
             trimestreCrear = null;
-        }finally
-        {
-            if(session !=null)
-            {
+        } finally {
+            if (session !=null) {
                 session.close();
             }
         }
         
         return trimestreCrear;
-    
     }
 
     @Override

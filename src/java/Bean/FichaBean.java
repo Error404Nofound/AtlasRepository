@@ -62,7 +62,7 @@ public class FichaBean {
     public void redireccionarModificarFicha() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("ModificarFicha.xhtml");
     }
-
+    //no funciona
     public void modificarFicha(Ficha fichaModificar) throws IOException {
         FichaDao fichaNegocio = new FichaBusiness();
         // Se crea un objeto de tipo programa de formación

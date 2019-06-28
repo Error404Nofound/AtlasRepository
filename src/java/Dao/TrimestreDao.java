@@ -19,4 +19,6 @@ public interface TrimestreDao {
     public List<Trimestre> listaTrimestre();
     public boolean modificarTrimestre(Trimestre trimestreModificar);
     public boolean eliminarTrimestre(Trimestre trimestreEliminar);
+
+    public List<Trimestre> consultarListaTrimestre();
 }

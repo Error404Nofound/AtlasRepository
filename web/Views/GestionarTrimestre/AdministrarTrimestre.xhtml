@@ -9,7 +9,11 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="ContenidoBody">
         <h1>Administrar Trimestre</h1>
-
+        <h:button class="btn btn-success" id="btnCrear" outcome="CrearTrimestre.xhtml" value="Crear Trimestre">
+        </h:button>
+        <br/>
+        <br/>
+        <br/>
         <h:form id="formTablaTrimestre">
             <p:dataTable var="trimestreItem" value="#{trimestreBean.listaTrimestre}"
                          emptyMessage="No existen registros"
@@ -19,8 +23,7 @@
                          >
 
                 <p:column headerText="Acciones">
-                    <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarTrimestre">
-                        <f:setPropertyActionListener target="#{trimestreBean.trimestre}" value="#{trimestreItem}"/>
+                    <p:commandButton value="Modificar" action="#{trimestreBean.redireccionarModificarTrimestre()}">
                     </p:commandButton>
                 </p:column>
                 <p:column headerText="Fecha Inicio">
@@ -33,46 +36,22 @@
                     <h:outputText value="#{trimestreItem.numeroTrimestre}"/>
                 </p:column>
                 <p:column headerText="Ficha">
-                    <h:outputText value=""/>
+                    <h:outputText value="#{trimestreItem.ficha}"/>
                 </p:column>
-                
             </p:dataTable>
         </h:form>
-        
-        <h:button class="btn btn-success" id="btnCrear" outcome="CrearTrimestre.xhtml" value="Crear Trimestre">
-        </h:button>
-        <br/>
-        <br/>
-        <br/>
-
-        <p:dialog id="dlg1" header="Modificar Trimestre" showEffect="fade" hideEffect="fade" widgetVar="dlgmodificar"
+    </ui:define>
+     
+        <p:dialog id="dlg1" header="Eliminar Trimestre"
+                  showEffect="fade" hideEffect="fade" widgetVar="dlConfirmarEliminar"
                   modal="true" resizable="false" minWidth="200">
-            <h:form id="formModificarTrimestre">
-                <p:panelGrid columns="2">
-                    
-                    <p:outputLabel value="Fecha Inicio"/>
-                    <p:inputText value="#{trimestreBean.trimestre.fechaInicio}"/>
-
-                    <p:outputLabel value="Fecha Fin"/>
-                    <p:inputText value="#{trimestreBean.trimestre.fechaFin}"/>
-                    
-                    <p:outputLabel value="Numero Trimestre"/>
-                    <p:inputText value="#{trimestreBean.trimestre.numeroTrimestre}"/>
-                    
-                    <p:outputLabel value="Ficha"/>
-                    <p:inputText value="#{trimestreBean.trimestre.ficha}"/>
-                    
-                </p:panelGrid>
-                <p:commandButton value="Modificar" update=":formTablaTrimestre"
-                                 actionListener="#{trimestreBean.modificarTrimestre()}"
-                                 oncomplete="dlgmodificar.hide();"/>
+            <h:form id="formEliminar">
+                <h:outputText value="¿Eliminar Trimestre?"/>
+                
+                <p:commandButton value="Si" actionListener="#{trimestreBean.eliminarTrimestre()}"
+                                 oncomplete="dlConfirmarEliminar.hide();" update=":formTablaTrimestre"/>
+                <p:commandButton value="No" onclick="dlg1.hide()"/>
             </h:form>
         </p:dialog>
-        
-        
-        
-        
-
-    </ui:define>
 
 </ui:composition>
