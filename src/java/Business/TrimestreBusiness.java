@@ -65,7 +65,7 @@ public class TrimestreBusiness implements TrimestreDao {
 
     @Override
     public List<Trimestre> listaTrimestre() {
-       Session session = null;
+        Session session = null;
         
         List <Trimestre> listaTrimestre = null;
         try {
@@ -123,7 +123,7 @@ public class TrimestreBusiness implements TrimestreDao {
 
     @Override
     public boolean eliminarTrimestre(Trimestre trimestreEliminar) {
-       Session session = null;
+        Session session = null;
         boolean resultado = false;
         try
         {
@@ -147,5 +147,11 @@ public class TrimestreBusiness implements TrimestreDao {
         
         return resultado;
     }
+
+    @Override
+    public List<Trimestre> consultarListaTrimestre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
