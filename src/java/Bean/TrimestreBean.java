@@ -62,7 +62,7 @@ public class TrimestreBean {
     public void redireccionarModificarTrimestre() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("ModificarTrimestre.xhtml");
     }
-    //no funciona
+    
     public void modificarTrimestre(Trimestre trimestreModificar) throws IOException {
         TrimestreDao trimestreNegocio = new TrimestreBusiness();
         // Se crea un objeto de tipo ficha
@@ -91,12 +91,44 @@ public class TrimestreBean {
         }
     }
 
-    // Metodos Get y Set arreglarlos
-    public Trimestre getTrimestre() {
+    // Metodos Get y Set 
+    public List<Trimestre> getListaTrimestre() {
+        TrimestreDao trimestreNegocio = new TrimestreBusiness();
+        listaTrimestre = trimestreNegocio.consultarListaTrimestre();
+        return listaTrimestre;
+    }
+
+    public void setListaTrimestre(List<Trimestre> listaTrimestre) {
+        this.listaTrimestre = listaTrimestre;
+    }
+
+ public Trimestre getTrimestre() {
         return trimestre;
     }
 
-    public void setTrimestre(Trimestre trimestre) {
+ public void setTrimestre(Trimestre trimestre) {
         this.trimestre = trimestre;
     }
+
+    public String getIdFicha() {
+        return IdFicha;
+    }
+
+    public void setIdFicha(String IdFicha) {
+        this.IdFicha = IdFicha;
+    }
+
+public List<Ficha> getListaFicha() {
+        
+         // Se crea la instaci del Negocio de programa de formación para consultar el listado
+        FichaDao fichaNegocio = new FichaBusiness();
+        // Se guarda la lista de programas en la lista global de programas; pendiente
+        listaFicha = fichaNegocio.consultarListaFicha();
+        return listaFicha;
+    }
+
+public void setListaFicha(List<Ficha> listaFicha) {
+        this.listaFicha = listaFicha;
+}
+    
 }// fin de la clases trimestreBean
