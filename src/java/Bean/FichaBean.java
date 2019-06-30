@@ -91,7 +91,7 @@ public class FichaBean {
         }
     }
 
-    // Metodos Get y Set
+    // Metodos Get y Set de ficha
     public List<Ficha> getListaFichas() {
         FichaDao fichaNegocio = new FichaBusiness();
         listaFichas = fichaNegocio.consultarListaFicha();

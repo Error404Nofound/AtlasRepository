@@ -91,6 +91,7 @@ public class CompetenciaBean {
         }
     }
 
+    // Metodos Get y Set de competencia
     public List<Competencia> getListaCompetencias() {
         CompetenciaDao competenciaNegocio= new CompetenciaBusiness();
         listaCompetencias = competenciaNegocio.consultarListaCompetencia();
@@ -99,14 +100,6 @@ public class CompetenciaBean {
 
     public void setListaCompetencias(List<Competencia> listaCompetencias) {
         this.listaCompetencias = listaCompetencias;
-    }
-
-    public List<ProgramaDeFormacion> getListaProgramas() {
-        return ListaProgramas;
-    }
-
-    public void setListaProgramas(List<ProgramaDeFormacion> ListaProgramas) {
-        this.ListaProgramas = ListaProgramas;
     }
 
     public Competencia getCompetencia() {
@@ -124,5 +117,18 @@ public class CompetenciaBean {
     public void setIdProgramaFormacion(String IdProgramaFormacion) {
         this.IdProgramaFormacion = IdProgramaFormacion;
     }
-    
+
+    public List<ProgramaDeFormacion> getListaProgramas() {
+
+        // Se crea la instaci del Negocio de programa de formación para consultar el listado
+        ProgramaDeFormacionDao programaNegocio = new ProgramaDeFormacionBusiness();
+        // Se guarda la lista de programas en la lista global de programas
+        ListaProgramas = programaNegocio.listaProgramaDeFormacion();
+        return ListaProgramas;
+    }
+
+    public void setListaProgramas(List<ProgramaDeFormacion> ListaProgramas) {
+        this.ListaProgramas = ListaProgramas;
+    }
+
 }

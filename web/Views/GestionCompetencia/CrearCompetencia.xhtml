@@ -22,10 +22,10 @@
                 <p:inputText value="#{competenciaBean.competencia.nombreCompetencia}"/> 
                 
                  <p:outputLabel value="Estado"/>
-                <p:inputText value="#{competenciaBean.competencia.estadoCompetencia}"/> 
+                 <p:inputText value="#{competenciaBean.competencia.estado}"/> 
                 
                  <p:outputLabel value="Descripción"/>
-                <p:inputText value="#{competenciaBean.competencia.descripcionCompetencia}"/> <!--este es el segundo campo para escribir-->
+                 <p:inputTextarea value="#{competenciaBean.competencia.descripcion}"/> <!--este es el segundo campo para escribir-->
                 
             </p:panelGrid>
             <p:commandButton actionListener="#{competenciaBean.crearCompetencia()}" value="Registrar" class="btn btn-success"/>
