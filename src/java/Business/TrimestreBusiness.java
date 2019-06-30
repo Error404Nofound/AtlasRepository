@@ -34,7 +34,7 @@ public class TrimestreBusiness implements TrimestreDao {
             session.getTransaction().rollback();
             trimestreCrear = null;
         } finally {
-            if (session !=null) {
+            if (session != null) {
                 session.close();
             }
         }
@@ -51,11 +51,9 @@ public class TrimestreBusiness implements TrimestreDao {
             session = NewHibernateUtil.getSessionFactory().openSession();
             trimestre  = (Trimestre) session.get(Trimestre.class,idTrimestre);
             
-        }catch(Exception ex)
-        {
+        }catch(Exception ex){
             System.out.println(ex.getMessage());
-        }finally
-        {
+        }finally{
             if(session !=null && session.isOpen()){
                 session.close();
             }
@@ -64,14 +62,14 @@ public class TrimestreBusiness implements TrimestreDao {
     }
 
     @Override
-    public List<Trimestre> listaTrimestre() {
+    public List<Trimestre> consultarListaTrimestre() {
         Session session = null;
         
-        List <Trimestre> listaTrimestre = null;
+        List <Trimestre> listaTrimestres = null;
         try {
             session = NewHibernateUtil.getSessionFactory().openSession();
             Query query = session.createQuery("from Trimestre");
-            listaTrimestre = (List<Trimestre>) query.list();
+            listaTrimestres = (List<Trimestre>) query.list();
             
             
         }catch(Exception ex)
@@ -84,7 +82,7 @@ public class TrimestreBusiness implements TrimestreDao {
                 session.close();
             }
         }
-        return listaTrimestre;
+        return listaTrimestres;
     }
 
     @Override
@@ -147,11 +145,4 @@ public class TrimestreBusiness implements TrimestreDao {
         
         return resultado;
     }
-
-    @Override
-    public List<Trimestre> consultarListaTrimestre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
 }

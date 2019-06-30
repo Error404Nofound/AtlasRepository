@@ -16,9 +16,7 @@ public interface TrimestreDao {
     
     public Trimestre crearTrimestre(Trimestre trimestreCrear);
     public Trimestre consultarTrimestrePorId(int idTrimestre);
-    public List<Trimestre> listaTrimestre();
+    public List<Trimestre> consultarListaTrimestre();
     public boolean modificarTrimestre(Trimestre trimestreModificar);
     public boolean eliminarTrimestre(Trimestre trimestreEliminar);
-
-    public List<Trimestre> consultarListaTrimestre();
 }
