@@ -1,16 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/Views/Layout/Layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="ContenidoBody">
+        <h1>Crear Competencia</h1>
+
+        <h:form id="frmCrearCompetencia">
+            <p:panelGrid columns="2">
+                <p:outputLabel for="prog" value="Programa: " />
+                <p:selectOneMenu id="prog" value="#{competenciaBean.idProgramaFormacion}">
+                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItems value="#{competenciaBean.listaProgramas}" var="programa" itemValue="#{programa.idPrograma}" itemLabel="#{programa.nombrePrograma}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Nombre Competencia"/>
+                <p:inputText value="#{competenciaBean.competencia.nombreCompetencia}"/> 
+                
+                 <p:outputLabel value="Estado"/>
+                <p:inputText value="#{competenciaBean.competencia.estadoCompetencia}"/> 
+                
+                 <p:outputLabel value="Descripción"/>
+                <p:inputText value="#{competenciaBean.competencia.descripcionCompetencia}"/> <!--este es el segundo campo para escribir-->
+                
+            </p:panelGrid>
+            <p:commandButton actionListener="#{competenciaBean.crearCompetencia()}" value="Registrar" class="btn btn-success"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
