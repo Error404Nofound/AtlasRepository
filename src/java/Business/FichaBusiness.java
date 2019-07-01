@@ -129,5 +129,4 @@ public class FichaBusiness implements FichaDao {
         }
         return resultado;
     }
-
 }

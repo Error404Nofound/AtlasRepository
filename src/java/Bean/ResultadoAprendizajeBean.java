@@ -5,10 +5,23 @@
  */
 package Bean;
 
+import Business.ResultadoAprendizajeBusiness;
+import Business.CompetenciaBusiness;
+import Dao.ResultadoAprendizajeDao;
+import Dao.CompetenciaDao;
+import Model.ResultadoAprendizaje;
+import Model.Competencia;
+import java.io.IOException;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 /**
  *
  * @author Asus
  */
+@ManagedBean
+@ViewScoped
 public class ResultadoAprendizajeBean {
     
 }
