@@ -26,7 +26,8 @@
                 <p:column headerText="Acciones">
                     <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarProgramaDeFormacion">
                         <f:setPropertyActionListener target="#{programaDeFormacionBean.programaDeFormacion}" value="#{programaDeFormacionItem}"/>
-                    </p:commandButton>
+                    </p:commandButton></p:column>
+                 <p:column headerText="Acciones">   
                     <p:commandButton value="Eliminar" >
                         <f:setPropertyActionListener target="#{programaDeFormacionBean.programaDeFormacion}" value="#{programaDeFormacionItem}"/>
                     </p:commandButton>

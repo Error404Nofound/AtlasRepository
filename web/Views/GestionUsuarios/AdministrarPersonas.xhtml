@@ -24,13 +24,11 @@
                          >
 
                 <p:column headerText="Acciones">
-                    <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarPersonas">
-                        <f:setPropertyActionListener target="#{personasBean.personas}" value="#{personasItem}"/>
+                    <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarPersona">
+                        <f:setPropertyActionListener target="#{personaBean.persona}" value="#{personaItem}"/>
                     </p:commandButton>
-                </p:column>
-                <p:column headerText="Eliminar">
-                    <p:commandButton value="Eliminar" >
-                        <f:setPropertyActionListener target="#{personasBean.personas}" value="#{personasItem}"/>
+                    <p:commandButton value="Eliminar"  >
+                        <f:setPropertyActionListener target="#{personaBean.persona}" value="#{personaItem}"/>
                     </p:commandButton>
                 </p:column>
                 <p:column headerText="Numero Documento">
