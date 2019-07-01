@@ -1,8 +1,14 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Bean;
 
 import Business.PersonaBusiness;
+import Business.UsuarioBusiness;
 import Dao.PersonaDao;
+import Dao.UsuarioDao;
 import Model.Persona;
 import Model.Usuario;
 import java.io.IOException;
@@ -10,8 +16,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-
-
 
 /**
  *
@@ -59,7 +63,15 @@ public class PersonaBean {
         }
     }
     
+    public void eliminarPersona(Persona personaEliminar) throws IOException {
+        PersonaDao personaNegocio = new PersonaBusiness();
+        boolean resultado = personaNegocio.eliminarPersona(personaEliminar);
+        if (resultado) {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("AdministrarPersona.xhtml");
+        }
+    }
     
+    // Metodos Get y Set de Persona
     public List<Persona> getListaPersonas() {
         PersonaDao personaNegocio = new PersonaBusiness();
         this.listaPersonas = personaNegocio.listaPersonas();

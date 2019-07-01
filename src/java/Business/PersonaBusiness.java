@@ -6,10 +6,10 @@
 package Business;
 
 import Dao.PersonaDao;
+
 import Model.Persona;
 import Persistence.NewHibernateUtil;
 import java.util.List;
-import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -95,28 +95,24 @@ public class PersonaBusiness implements PersonaDao{
 
     @Override
     public boolean eliminarPersona(Persona personaEliminar) {
-                      Session session = null;
+        Session session = null;
         boolean resultado = false;
-        try
-        {
+        try{
             session = NewHibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.delete(personaEliminar);
             session.getTransaction().commit();
             resultado = true;
-        }catch(Exception ex)
-        {
+        } catch(Exception ex) {
             System.err.println(ex.getMessage());
             session.getTransaction().rollback();
             
-        }finally
-        {
-            if(session !=null)
-            {
+        } finally {
+            if(session !=null) {
                 session.close();
+                
             }
         }
-        
         return resultado;
     }
 
