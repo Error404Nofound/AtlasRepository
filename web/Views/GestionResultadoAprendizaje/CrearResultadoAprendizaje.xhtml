@@ -8,18 +8,18 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="ContenidoBody">
-        <h1>Crear Ficha</h1>
+        <h1>Crear Resultado Aprendizaje</h1>
 
-        <h:form id="frmCrearFicha">
+        <h:form id="frmCrearResultadoAprendizaje">
             <p:panelGrid columns="2">
-                <p:outputLabel for="prog" value="Programa: " />
-                <p:selectOneMenu id="prog" value="#{fichaBean.idProgramaFormacion}">
-                    <f:selectItem itemLabel="Select One" itemValue="" />
-                    <f:selectItems value="#{fichaBean.listaProgramas}" var="programa" itemValue="#{programa.idPrograma}" itemLabel="#{programa.nombrePrograma}"/>
+                <p:outputLabel for="comp" value="Competencia: " />
+                <p:selectOneMenu id="comp" value="#{resultadoAprendizajeBean.idCompetencia}">
+                    <f:selectItem itemLabel="Seleccionar una competencia" itemValue="" />
+                    <f:selectItems value="#{resultadoAprendizajeBean.listaCompetencia}" var="competencia" itemValue="#{competencia.idCompetencia}" itemLabel="#{competencia.nombreCompetencia}"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Cupo"/>
-                <p:inputText value="#{fichaBean.ficha.cupo}"/> <!--este es el segundo campo para escribir-->
+                <p:outputLabel value="Nombre"/>
+                <p:inputText value="#{ResultadoAprendizajeBean.ResultadoAprendizaje.nombre}"/> <!--este es el segundo campo para escribir-->
             </p:panelGrid>
             <p:commandButton actionListener="#{fichaBean.crearFicha()}" value="Registrar" class="btn btn-success"/>
         </h:form>
