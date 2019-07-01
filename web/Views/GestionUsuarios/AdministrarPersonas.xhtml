@@ -10,21 +10,24 @@
     <ui:define name="ContenidoBody">
         <h1>Administrar Personas</h1>
 
-        <h:button class="btn btn-success" id="btnCrear" outcome="CrearPersona.xhtml" value="Crear Persona">
-        </h:button>
+        <h:button class="btn btn-block btn-primary" id="btnCrear" outcome="CrearPersona.xhtml" value="Crear Persona"/>
         <br/>
-        <br/>
-        <br/>
-        <h:form id="formTablaPersonas">
-            <p:dataTable id="persona"
-                         var="personaItem" value="#{personaBean.listaPersonas}"
-                         selectionMode="single" selection="#{personaBean.persona}" rowKey="#{personaItem.numeroDocumento}"
-                         emptyMessage="No existen registros"
-                         paginator="true" rows="10" paginatorPosition="bottom"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
-                         {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         >
+      
 
+        <h:form id="formTablaPersonas">
+            <p:dataTable 
+                
+                id="persona"
+                var="personaItem" value="#{personaBean.listaPersonas}"
+                selectionMode="single" selection="#{personaBean.persona}" rowKey="#{personaItem.numeroDocumento}"
+                emptyMessage="No existen registros"
+                paginator="true" rows="10" paginatorPosition="bottom"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                >
+                <f:facet name="header" class="panel panel-success" >
+                    <p:outputLabel value="LISTADO DE PERSONAS" style="font-size: 20px; color: #036fab"/> 
+                </f:facet>
                 <!--<p:column headerText="Modificar">
                     <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarPersona">
                         <f:setPropertyActionListener target="#{personaBean.persona}" value="#{personaItem}"/>
@@ -60,7 +63,7 @@
                 <f:facet name="footer">
                     <p:commandButton process="persona" update=":formTablaPersonas:verDetalle"  value="Ver" icon="ui ui-icon-search"  oncomplete="PF('verDialog').show()" />
                     <p:commandButton process="persona" update=":formTablaPersonas:modificar"  value="Modificar" icon="ui ui-icon-search"  oncomplete="PF('modificarDialog').show()" />
-
+                    <p:commandButton process="persona" update=":formTablaPersonas"  value="Eliminar"/>
                 </f:facet>
 
             </p:dataTable>
@@ -96,7 +99,7 @@
 
             <p:dialog  header="Modificar Persona"  widgetVar="modificarDialog" showEffect="fade" hideEffect="fade"  modal="true" resizable="false">
                 <p:outputPanel id="modificar" style="text-align:center">
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="2" rendered="#{personaBean.persona != null}">
                         <p:outputLabel value="Numero Documento"/>
                         <p:inputText value="#{personaBean.persona.numeroDocumento}"/>
 
@@ -130,7 +133,9 @@
                     <p:commandButton value="Modificar" update=":formTablaPersonas"
                                      actionListener="#{personaBean.modificarPersona()}"
                                      oncomplete="dlgmodificar.hide();"/>
+                    <p:commandButton value="Cerrar" immediate="true" oncomplete="PF('modificarDialog').hide()" style=""/>
                 </p:outputPanel>
+
             </p:dialog>
 
         </h:form>
