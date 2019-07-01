@@ -4,7 +4,8 @@
                 template="/Views/Layout/Layout.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="ContenidoBody">
         <h1>Crear Persona</h1>
@@ -16,8 +17,12 @@
                 <p:inputText value="#{personaBean.persona.numeroDocumento}"/>
                 
                 <p:outputLabel value="Tipo documento"/>
-                <p:inputText value="#{personaBean.persona.tipoDocumento}"/>
-                
+                <p:selectOneMenu value="#{personaBean.persona.tipoDocumento}">
+                    <f:selectItem itemLabel="Seleccione Uno" itemValue=""/>
+                    <f:selectItem itemLabel="C.C." itemValue="CC"/>
+                    <f:selectItem itemLabel="T.I." itemValue="TI"/>
+                </p:selectOneMenu>
+                                
                 <p:outputLabel value="Primer Nombre"/>
                 <p:inputText value="#{personaBean.persona.primerNombre}"/>
                 
@@ -31,7 +36,11 @@
                 <p:inputText value="#{personaBean.persona.segundoApellido}"/>
                 
                 <p:outputLabel value="Genero"/>
-                <p:inputText value="#{personaBean.persona.genero}"/>
+                <p:selectOneMenu value="#{personaBean.persona.genero}">
+                    <f:selectItem itemLabel="Seleccione Uno" itemValue=""/>
+                    <f:selectItem itemLabel="MASCULINNO" itemValue="MASCULINO"/>
+                    <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO"/>
+                </p:selectOneMenu>
                 
                 <p:outputLabel value="Correo"/>
                 <p:inputText value="#{personaBean.persona.correo}"/>

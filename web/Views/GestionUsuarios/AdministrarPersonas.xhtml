@@ -16,21 +16,25 @@
         <br/>
         <br/>
         <h:form id="formTablaPersonas">
-            <p:dataTable var="personaItem" value="#{personaBean.listaPersonas}"
+            <p:dataTable id="persona"
+                         var="personaItem" value="#{personaBean.listaPersonas}"
+                         selectionMode="single" selection="#{personaBean.persona}" rowKey="#{personaItem.numeroDocumento}"
                          emptyMessage="No existen registros"
                          paginator="true" rows="10" paginatorPosition="bottom"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
                          {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          >
 
-                <p:column headerText="Acciones">
+                <!--<p:column headerText="Modificar">
                     <p:commandButton value="Modificar" oncomplete="dlgmodificar.show();" update=":formModificarPersona">
                         <f:setPropertyActionListener target="#{personaBean.persona}" value="#{personaItem}"/>
                     </p:commandButton>
+                    </p:column>
+                <p:column headerText="Eliminar">
                     <p:commandButton value="Eliminar"  >
                         <f:setPropertyActionListener target="#{personaBean.persona}" value="#{personaItem}"/>
                     </p:commandButton>
-                </p:column>
+                </p:column>/-->
                 <p:column headerText="Numero Documento">
                     <h:outputText value="#{personaItem.numeroDocumento}"/>
                 </p:column>
@@ -49,42 +53,111 @@
                 <p:column headerText="Genero">
                     <h:outputText value="#{personaItem.genero}"/>
                 </p:column>
+                <p:column headerText="Correo">
+                    <h:outputText value="#{personaItem.correo}"/>
+                </p:column>
+
+                <f:facet name="footer">
+                    <p:commandButton process="persona" update=":formTablaPersonas:verDetalle"  value="Ver" icon="ui ui-icon-search"  oncomplete="PF('verDialog').show()" />
+                    <p:commandButton process="persona" update=":formTablaPersonas:modificar"  value="Modificar" icon="ui ui-icon-search"  oncomplete="PF('modificarDialog').show()" />
+
+                </f:facet>
+                
             </p:dataTable>
+
+            <p:dialog header="Ver Persona" widgetVar="verDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="verDetalle" style="text-align:center; ">
+                    <p:panelGrid  columns="2" rendered="#{personaBean.persona != null}">
+                        <p:outputLabel value="Numero Documento"/>
+                        <p:inputText value="#{personaBean.persona.numeroDocumento}"/>
+
+                        <p:outputLabel value="Primer Nombre"/>
+                        <p:inputText value="#{personaBean.persona.primerNombre}"/>
+
+                        <p:outputLabel value="Segundo Nombre"/>
+                        <p:inputText value="#{personaBean.persona.segundoNombre}"/>
+
+                        <p:outputLabel value="Primer Apellido"/>
+                        <p:inputText value="#{personaBean.persona.primerApellido}"/>
+
+                        <p:outputLabel value="Segundo Apellido"/>
+                        <p:inputText value="#{personaBean.persona.segundoApellido}"/>
+
+                        <p:outputLabel value="Genero"/>
+                        <p:inputText value="#{personaBean.persona.genero}"/>
+
+                        <p:outputLabel value="E mail"/>
+                        <p:inputText value="#{personaBean.persona.correo}"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="Cerrar" immediate="true" oncomplete="PF('verDialog').hide()" style="margin-top: 10px"/>
+                </p:outputPanel>
+            </p:dialog>
+
+            <p:dialog  header="Modificar Persona"  widgetVar="modificarDialog" showEffect="fade" hideEffect="fade"  modal="true" resizable="false">
+                <p:outputPanel id="modificar" style="text-align:center">
+                    <p:panelGrid columns="2">
+
+                        <p:outputLabel value="Primer Nombre"/>
+                        <p:inputText value="#{personaBean.persona.primerNombre}"/>
+
+                        <p:outputLabel value="Segundo Nombre"/>
+                        <p:inputText value="#{personaBean.persona.segundoNombre}"/>
+
+                        <p:outputLabel value="Primer Apellido"/>
+                        <p:inputText value="#{personaBean.persona.primerApellido}"/>
+
+                        <p:outputLabel value="Segundo Apellido"/>
+                        <p:inputText value="#{personaBean.persona.segundoApellido}"/>
+
+                        <p:outputLabel value="Numero Documento"/>
+                        <p:inputText value="#{personaBean.persona.numeroDocumento}"/>
+
+                        <p:outputLabel value="Genero"/>
+                        <p:inputText value="#{personaBean.persona.genero}"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="Modificar" update=":formTablaPersonas"
+                                     actionListener="#{personaBean.modificarPersona()}"
+                                     oncomplete="dlgmodificar.hide();"/>
+                </p:outputPanel>
+            </p:dialog>
+
         </h:form>
 
         <p:dialog id="dlg1" header="Modificar Persona" showEffect="fade" hideEffect="fade" widgetVar="dlgmodificar"
                   modal="true" resizable="false" minWidth="200">
             <h:form id="formModificarPersona">
                 <p:panelGrid columns="2">
-                    
+
                     <p:outputLabel value="Primer Nombre"/>
                     <p:inputText value="#{personaBean.persona.primerNombre}"/>
 
                     <p:outputLabel value="Segundo Nombre"/>
                     <p:inputText value="#{personaBean.persona.segundoNombre}"/>
-                    
+
                     <p:outputLabel value="Primer Apellido"/>
                     <p:inputText value="#{personaBean.persona.primerApellido}"/>
 
                     <p:outputLabel value="Segundo Apellido"/>
                     <p:inputText value="#{personaBean.persona.segundoApellido}"/>
-                    
+
                     <p:outputLabel value="Numero Documento"/>
                     <p:inputText value="#{personaBean.persona.numeroDocumento}"/>
 
                     <p:outputLabel value="Genero"/>
                     <p:inputText value="#{personaBean.persona.genero}"/>
-                    
+
                 </p:panelGrid>
                 <p:commandButton value="Modificar" update=":formTablaPersonas"
                                  actionListener="#{personaBean.modificarPersona()}"
                                  oncomplete="dlgmodificar.hide();"/>
             </h:form>
         </p:dialog>
-        
-        
-        
-        
+
+
+
+
 
     </ui:define>
 
