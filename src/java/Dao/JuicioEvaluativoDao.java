@@ -5,10 +5,17 @@
  */
 package Dao;
 
+import Model.JuicioEvalutivo;
+import java.util.List;
 /**
  *
  * @author Asus
  */
 public interface JuicioEvaluativoDao {
     
+    public JuicioEvaluativo crearJuicioEvaluativo(JuicioEvaluativo JuicioEvaluativoCrear);
+    public JuicioEvaluativo consultarJuicioEvaluativoPorId(int Id);
+    public List<JuicioEvaluativo> consultarListaJuicioEvaluativo();
+    public boolean modificarFicha(JuicioEvaluativo juicioEvaluativoModificar);
+    public boolean eliminarFicha(JuicioEvaluativo juicioEvaluativoEliminar);
 }
