@@ -19,8 +19,8 @@ import org.hibernate.Session;
  */
 public class ResultadoAprendizajeBusiness implements ResultadoAprendizajeDao{
     
-   // @override
-    public ResultadoAprendizaje resultadoAprendizaje(ResultadoAprendizaje resultadoAprendizajeCrear){
+    @Override
+    public ResultadoAprendizaje crearResultadoAprendizaje(ResultadoAprendizaje resultadoAprendizajeCrear) {
       Session session = null;
       try {
            java.sql.Date fechaActual = new java.sql.Date(0, 0, 0);
@@ -42,7 +42,7 @@ public class ResultadoAprendizajeBusiness implements ResultadoAprendizajeDao{
        return resultadoAprendizajeCrear; 
     }
     
-   // @override
+    @Override
     public ResultadoAprendizaje consultarResultadoAprendizajePorId (int Id){  
         Session session = null;
         
@@ -61,8 +61,8 @@ public class ResultadoAprendizajeBusiness implements ResultadoAprendizajeDao{
         return resultadoAprendizaje;
     }
     
-    //@override
-    public List<ResultadoAprendizaje> consultarlistaResultadoAprendizaje(){
+    @Override
+    public List<ResultadoAprendizaje> consultarListaResultadoAprendizaje() {
         Session session = null;
         
         List <ResultadoAprendizaje> listaResultadoAprendizaje = null;
@@ -82,7 +82,7 @@ public class ResultadoAprendizajeBusiness implements ResultadoAprendizajeDao{
         return listaResultadoAprendizaje;
     }
     
-    //@override
+    @Override
     public boolean modificarResultadoAprendizaje (ResultadoAprendizaje resultadoAprendizajeModificar){
         Session session = null;
         ResultadoAprendizaje registroActualizar = new ResultadoAprendizaje();
@@ -108,7 +108,7 @@ public class ResultadoAprendizajeBusiness implements ResultadoAprendizajeDao{
         return resultado;
     }
     
-    //@override
+    @Override
     public boolean eliminarResultadoAprendizaje(ResultadoAprendizaje resultadoAprendizajeEliminar){
         Session session = null;
         boolean resultado = false;

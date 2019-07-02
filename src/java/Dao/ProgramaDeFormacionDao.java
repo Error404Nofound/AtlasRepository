@@ -18,8 +18,5 @@ public interface ProgramaDeFormacionDao {
     public ProgramaDeFormacion consultarProgramaDeFormacionPorId(int idProgramaDeFormacion);
     public List<ProgramaDeFormacion> listaProgramaDeFormacion();
     public boolean modificarProgramaDeFormacion(ProgramaDeFormacion programaDeFormacionModificar);
-    public boolean eliminarProgramaDeFormacion (ProgramaDeFormacion programaDeFormacionEliminar);
-
-    
-    
+    public boolean eliminarProgramaDeFormacion (ProgramaDeFormacion programaDeFormacionEliminar);   
 }

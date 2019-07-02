@@ -119,7 +119,6 @@ public class FichaBean {
     }
 
     public List<ProgramaDeFormacion> getListaProgramas() {
-
         // Se crea la instaci del Negocio de programa de formación para consultar el listado
         ProgramaDeFormacionDao programaNegocio = new ProgramaDeFormacionBusiness();
         // Se guarda la lista de programas en la lista global de programas

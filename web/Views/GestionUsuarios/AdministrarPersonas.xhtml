@@ -65,7 +65,7 @@
                 <f:facet name="footer">
                     <p:commandButton process="persona" update=":formTablaPersonas:verDetalle"  value="Ver" icon="ui ui-icon-search"  oncomplete="PF('verDialog').show()" />
                     <p:commandButton process="persona" update=":formTablaPersonas:modificar"  value="Modificar" icon="ui ui-icon-search"  oncomplete="PF('modificarDialog').show()" />
-                    <p:commandButton process="persona" update=":formTablaPersonas"  value="Eliminar"/>
+                    <p:commandButton process="persona" update=":formTablaPersonas"  value="Eliminar" icon="ui ui-icon-search" actionListener="personaBean.eliminarPersona()" />
                 </f:facet>
 
             </p:dataTable>
@@ -173,9 +173,18 @@
         </p:dialog>
 
 
-
-
-
+        <p:dialog id="dlg1" header="Eliminar Persona"
+                  showEffect="fade" hideEffect="fade" widgetVar="dlConfirmarEliminar"
+                  modal="true" resizable="false" minWidth="200">
+            <h:form id="formEliminar">
+                <h:outputText value="¿Eliminar Persona?"/>
+                
+                <p:commandButton value="Si" actionListener="#{personaBean.eliminarPersona()}"
+                                 oncomplete="dlConfirmarEliminar.hide();" update=":formTablaPersona"/>
+                <p:commandButton value="No" onclick="dlg1.hide()"/>
+            </h:form>
+        </p:dialog>
+        
     </ui:define>
 
 </ui:composition>

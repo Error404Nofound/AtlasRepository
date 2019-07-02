@@ -1,16 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/Views/Layout/Layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="ContenidoBody">
+        <h1>Administrar Resultado Aprendizaje</h1>
+        <h:button class="btn btn-success" id="btnCrear" outcome="CrearResultadoAprendizaje.xhtml" value="Crear Resultado Aprendizaje">
+        </h:button>
+        <br/>
+        <br/>
+        <br/>
+        <h:form id="formTablaResultadoAprendizaje">
+            <p:dataTable var="resultadoAprendizajeItem" value="#{resultadoAprendizajeBean.listaResultadoAprendizaje}"
+                         emptyMessage="No existen registros"
+                         paginator="true" rows="10" paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink}
+                         {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         >
+
+                <p:column headerText="Acciones">
+                    <p:commandButton value="Eliminar" action="#{resultadoAprendizajeBean.eliminarResultadoAprendizaje(resultadoAprendizajeItem)}">
+                    </p:commandButton>
+                    <p:commandButton value="Actualizar" action="#{resultadoAprendizajeBean.redireccionarModificarResultadoAprendizaje()}">
+                    </p:commandButton>
+                </p:column>
+                <p:column headerText="Nombre Resultado">
+                    <h:outputText value="#{resultadoAprendizajeItem.nombreResultado}"/>
+                </p:column>
+                <p:column headerText="Descripcion">
+                    <h:outputText value="#{resultadoAprendizajeItem.descripcion}"/>
+                </p:column>
+                <p:column headerText="Fecha Registro">
+                    <h:outputText value="#{resultadoAprendizajeItem.fechaRegistro}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+    
+        <p:dialog id="dlg1" header="Eliminar Resultado Aprendizaje"
+                  showEffect="fade" hideEffect="fade" widgetVar="dlConfirmarEliminar"
+                  modal="true" resizable="false" minWidth="200">
+            <h:form id="formEliminar">
+                <h:outputText value="¿Eliminar Resultado Aprendizaje?"/>
+                
+                <p:commandButton value="Si" actionListener="#{resultadoAprendizajeBean.eliminarResultadoAprendizaje()}"
+                                 oncomplete="dlConfirmarEliminar.hide();" update=":formTablaResultadoAprendizaje"/>
+                <p:commandButton value="No" onclick="dlg1.hide()"/>
+            </h:form>
+        </p:dialog>
+</ui:composition> 

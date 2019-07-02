@@ -131,5 +131,10 @@ public class CompetenciaBusiness implements CompetenciaDao {
         }
         return resultado;
     }
+
+    @Override
+    public List<Competencia> listaCompetencia() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
