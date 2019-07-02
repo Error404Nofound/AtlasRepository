@@ -1,4 +1,4 @@
- <?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/Views/Layout/Layout.xhtml"
@@ -8,18 +8,24 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="ContenidoBody">
-        <h1>Modificar Resultado Aprendizaje</h1>
+        <h1>Crear Resultado Aprendizaje</h1>
 
-        <h:form id="formModificarResultadoAprendizaje">
+        <h:form id="frmCrearResultadoAprendizaje">
             <p:panelGrid columns="2">
                 <p:outputLabel for="comp" value="Competencia: " />
                 <p:selectOneMenu id="comp" value="#{resultadoAprendizajeBean.idCompetencia}">
-                    <f:selectItem itemLabel="Selecione una" itemValue="" />
+                    <f:selectItem itemLabel="Seleccione uno" itemValue="" />
                     <f:selectItems value="#{resultadoAprendizajeBean.listaCompetencia}" var="competencia" itemValue="#{competencia.idCompetencia}" itemLabel="#{competencia.nombreCompetencia}"/>
                 </p:selectOneMenu>
-
-                <p:outputLabel value="Nombre Resultado"/>
-                <p:inputText value="#{resultadoAprendizajeBean.resultadoAprendizaje.nombreResultado}"/>
+                
+                 <p:outputLabel value="Nombre Resultado"/>
+                 <p:inputText value="#{resultadoAprendizajeBean.resultadoAprendizaje.nombreResultado}"/> 
+                
+                 <p:outputLabel value="Descripción"/>
+                 <p:inputTextarea value="#{resultadoAprendizajeBean.resultadoAprendizaje.descripcion}"/> 
+                
+                 <p:outputLabel value="Fecha Creacion"/>
+                 <p:inputTextarea value="#{resultadoAprendizajeBean.resultadoAprendizaje.fechaRegistro}"/>
             </p:panelGrid>
             <p:commandButton actionListener="#{resultadoAprendizajeBean.crearResultadoAprendizaje()}" value="Registrar" class="btn btn-success"/>
         </h:form>

@@ -14,7 +14,7 @@
             <p:panelGrid columns="2">
                 <p:outputLabel for="prog" value="Programa: " />
                 <p:selectOneMenu id="prog" value="#{fichaBean.idProgramaFormacion}">
-                    <f:selectItem itemLabel="Select One" itemValue="" />
+                    <f:selectItem itemLabel="Seleccione uno" itemValue="" />
                     <f:selectItems value="#{fichaBean.listaProgramas}" var="programa" itemValue="#{programa.idPrograma}" itemLabel="#{programa.nombrePrograma}"/>
                 </p:selectOneMenu>
 
