@@ -93,6 +93,8 @@ public class ResultadoAprendizajeBusiness implements ResultadoAprendizajeDao{
             session.beginTransaction();
             registroActualizar.setNombreResultado(resultadoAprendizajeModificar.getNombreResultado());
             registroActualizar.setCompetencia(resultadoAprendizajeModificar.getCompetencia());
+            registroActualizar.setDescripcion(resultadoAprendizajeModificar.getDescripcion());
+            registroActualizar.setFechaRegistro(resultadoAprendizajeModificar.getFechaRegistro());
             session.update(registroActualizar);
             session.getTransaction().commit();
             resultado = true;
