@@ -57,7 +57,9 @@ public class PersonaBean {
         
         int val = 1;
         if( persona.getNumeroDocumento()!=""){
+            // Se instancia el business
             PersonaDao personaNegocio = new PersonaBusiness();
+            // Se llama al metodo que modifica y se le pasa por parametro el registro con los nuevos valores
             personaNegocio.modificarPersona(persona);
             persona = new Persona();
         }

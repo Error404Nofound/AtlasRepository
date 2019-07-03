@@ -17,52 +17,45 @@ import org.hibernate.Session;
  *
  * @author Johan
  */
-public class PersonaBusiness implements PersonaDao{
+public class PersonaBusiness implements PersonaDao {
 
     @Override
     public Persona crearPersona(Persona personaCrear) {
-              Session session = null;
-        try
-        {
+        Session session = null;
+        try {
             java.sql.Date fechaActual = new java.sql.Date(0, 0, 0);
-            
-            
+
             personaCrear.setFechaModificacio(fechaActual);
             session = NewHibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.save(personaCrear);
             session.getTransaction().commit();
-        }catch(Exception ex)
-        {
+        } catch (Exception ex) {
             System.err.println(ex.getMessage());
             session.getTransaction().rollback();
             personaCrear = null;
-        }finally
-        {
-            if(session !=null)
-            {
+        } finally {
+            if (session != null) {
                 session.close();
             }
         }
-        
+
         return personaCrear;
     }
 
     @Override
     public Persona consultarPersonaPorCedula(String cedula) {
-             Session session = null;
-        
+        Session session = null;
+
         Persona persona = null;
         try {
             session = NewHibernateUtil.getSessionFactory().openSession();
-            persona  = (Persona) session.get(Persona.class,cedula);
-            
-        }catch(Exception ex)
-        {
+            persona = (Persona) session.get(Persona.class, cedula);
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
-        }finally
-        {
-            if(session !=null && session.isOpen()){
+        } finally {
+            if (session != null && session.isOpen()) {
                 session.close();
             }
         }
@@ -72,21 +65,18 @@ public class PersonaBusiness implements PersonaDao{
     @Override
     public List<Persona> listaPersonas() {
         Session session = null;
-        
-        List <Persona> listaPersonas = null;
+
+        List<Persona> listaPersonas = null;
         try {
             session = NewHibernateUtil.getSessionFactory().openSession();
             Query query = session.createQuery("from Persona");
             listaPersonas = (List<Persona>) query.list();
-            
-            
-        }catch(Exception ex)
-        {
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
-        }finally
-        {
-        
-            if(session !=null){
+        } finally {
+
+            if (session != null) {
                 session.close();
             }
         }
@@ -97,20 +87,20 @@ public class PersonaBusiness implements PersonaDao{
     public boolean eliminarPersona(Persona personaEliminar) {
         Session session = null;
         boolean resultado = false;
-        try{
+        try {
             session = NewHibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.delete(personaEliminar);
             session.getTransaction().commit();
             resultado = true;
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             System.err.println(ex.getMessage());
             session.getTransaction().rollback();
-            
+
         } finally {
-            if(session !=null) {
+            if (session != null) {
                 session.close();
-                
+
             }
         }
         return resultado;
@@ -118,38 +108,40 @@ public class PersonaBusiness implements PersonaDao{
 
     @Override
     public boolean modificarPersona(Persona personaModificar) {
-           Session session = null;
-        
+        // Se instacia la sesión en nulo 
+        Session session = null;
+        // Se crea un nuevo objeto que contendrá la consulta del registro desde la bd
         Persona registroActualizar = new Persona();
+        // Se consulta el registro por el id
+        registroActualizar = consultarPersonaPorCedula(personaModificar.getNumeroDocumento());
         boolean resultado = false;
-        try
-        {
+        try {
+            // Se inicia la sesión de la conexión a la base de datos
             session = NewHibernateUtil.getSessionFactory().openSession();
-            
+            // Inicia la transacción 
             session.beginTransaction();
+            // Se empatan los valores que se modificaron desde el formulario 
             registroActualizar.setCorreo(personaModificar.getCorreo());
             registroActualizar.setPrimerNombre(personaModificar.getPrimerNombre());
             registroActualizar.setSegundoNombre(personaModificar.getSegundoNombre());
             registroActualizar.setPrimerApellido(personaModificar.getPrimerApellido());
             registroActualizar.setSegundoApellido(personaModificar.getSegundoApellido());
             registroActualizar.setGenero(personaModificar.getGenero());
-            
+            // Se actualiza  el registro 
             session.update(registroActualizar);
+            // Se hace el commit de la transacción
             session.getTransaction().commit();
             resultado = true;
-        }catch(Exception ex)
-        {
+        } catch (Exception ex) {
             System.err.println(ex.getMessage());
             session.getTransaction().rollback();
-            
-        }finally
-        {
-            if(session !=null)
-            {
+
+        } finally {
+            if (session != null) {
                 session.close();
             }
         }
         return resultado;
     }
-    
+
 }
