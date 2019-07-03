@@ -12,11 +12,11 @@
 
         <h:button class="btn btn-block btn-primary" id="btnCrear" outcome="CrearPersona.xhtml" value="Crear Persona"/>
         <br/>
-      
+
 
         <h:form id="formTablaPersonas">
             <p:dataTable 
-                
+
                 id="persona"
                 var="personaItem" value="#{personaBean.listaPersonas}"
                 selectionMode="single" selection="#{personaBean.persona}" rowKey="#{personaItem.numeroDocumento}"
@@ -41,6 +41,9 @@
                 <p:column headerText="Numero Documento">
                     <h:outputText value="#{personaItem.numeroDocumento}"/>
                 </p:column>
+                <p:column headerText="Tipo Documento">
+                    <h:outputText value="#{personaItem.tipoDocumento}"/>
+                </p:column>
                 <p:column headerText="Primer Nombre">
                     <h:outputText value="#{personaItem.primerNombre}"/>
                 </p:column>
@@ -60,18 +63,33 @@
                     <h:outputText value="#{personaItem.correo}"/>
                 </p:column>
 
-                
-                
                 <f:facet name="footer">
-                    <p:commandButton process="persona" update=":formTablaPersonas:verDetalle"  value="Ver" icon="ui ui-icon-search"  oncomplete="PF('verDialog').show()" />
-                    <p:commandButton process="persona" update=":formTablaPersonas:modificar"  value="Modificar" icon="ui ui-icon-search"  oncomplete="PF('modificarDialog').show()" />
-                    <p:commandButton process="persona" update=":formTablaPersonas"  value="Eliminar" icon="ui ui-icon-search" actionListener="personaBean.eliminarPersona()" />
+                    <p:commandButton process="persona" update=":formTablaPersonas:verDetalle"  
+                                     value="Ver" icon="ui ui-icon-search"  oncomplete="PF('verDialog').show()" />
+                    <p:commandButton process="persona" update=":formTablaPersonas:modificar"  
+                                     value="Modificar" icon="ui ui-icon-search"  oncomplete="PF('modificarDialog').show()" />
+                    <p:commandButton process="persona" update=":formTablaPersonas:eliminarDetalle"  
+                                     value="Eliminar" icon="ui ui-icon-search" oncomplete="PF('eliminarDialog').show()"/>
                 </f:facet>
 
             </p:dataTable>
 
+            <p:dialog id="dlg1" header="Eliminar Ficha"
+                      showEffect="fade" hideEffect="fade" widgetVar="eliminarDialog"
+                      modal="true" resizable="false" minWidth="200">
+                <p:outputPanel id="eliminarDetalle" style="text-align: center; ">
+                    <h:outputText value="¿Eliminar Persona?"/><br/>
+
+                    <p:commandButton value="Si" actionListener="#{personaBean.eliminarPersona(personaEliminar)}" 
+                                     immediate="true" oncomplete="PF('eliminarDialog').hide()"
+                                     style="background-color: #2b542c"/>
+                    <p:commandButton value="No" immediate="true" oncomplete="PF('eliminarDialog').hide()" style="background-color: #D20005"/>
+                </p:outputPanel>
+            </p:dialog>
+
+
             <p:dialog header="Ver Persona" widgetVar="verDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:outputPanel id="verDetalle" style="text-align:center; ">
+                <p:outputPanel id="verDetalle" style="text-align: left; ">
                     <p:panelGrid  columns="2" rendered="#{personaBean.persona != null}">
                         <p:outputLabel value="Numero Documento"/>
                         <p:inputText value="#{personaBean.persona.numeroDocumento}"/>
@@ -100,7 +118,7 @@
             </p:dialog>
 
             <p:dialog  header="Modificar Persona"  widgetVar="modificarDialog" showEffect="fade" hideEffect="fade"  modal="true" resizable="false">
-                <p:outputPanel id="modificar" style="text-align:center">
+                <p:outputPanel id="modificar" style="text-align: left">
                     <p:panelGrid columns="2" rendered="#{personaBean.persona != null}">
                         <p:outputLabel value="Numero Documento"/>
                         <p:inputText value="#{personaBean.persona.numeroDocumento}"/>
@@ -173,18 +191,8 @@
         </p:dialog>
 
 
-        <p:dialog id="dlg1" header="Eliminar Persona"
-                  showEffect="fade" hideEffect="fade" widgetVar="dlConfirmarEliminar"
-                  modal="true" resizable="false" minWidth="200">
-            <h:form id="formEliminar">
-                <h:outputText value="¿Eliminar Persona?"/>
-                
-                <p:commandButton value="Si" actionListener="#{personaBean.eliminarPersona()}"
-                                 oncomplete="dlConfirmarEliminar.hide();" update=":formTablaPersona"/>
-                <p:commandButton value="No" onclick="dlg1.hide()"/>
-            </h:form>
-        </p:dialog>
-        
+
+
     </ui:define>
 
 </ui:composition>

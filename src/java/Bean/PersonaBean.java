@@ -16,6 +16,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,6 +69,7 @@ public class PersonaBean {
     public void eliminarPersona(Persona personaEliminar) throws IOException {
         PersonaDao personaNegocio = new PersonaBusiness();
         boolean resultado = personaNegocio.eliminarPersona(personaEliminar);
+    
         if (resultado) {
             FacesContext.getCurrentInstance().getExternalContext().redirect("AdministrarPersona.xhtml");
         }

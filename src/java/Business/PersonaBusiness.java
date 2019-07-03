@@ -127,6 +127,7 @@ public class PersonaBusiness implements PersonaDao {
             registroActualizar.setPrimerApellido(personaModificar.getPrimerApellido());
             registroActualizar.setSegundoApellido(personaModificar.getSegundoApellido());
             registroActualizar.setGenero(personaModificar.getGenero());
+             registroActualizar.setTipoDocumento(personaModificar.getTipoDocumento());
             // Se actualiza  el registro 
             session.update(registroActualizar);
             // Se hace el commit de la transacción
